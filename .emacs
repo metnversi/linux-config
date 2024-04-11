@@ -16,6 +16,12 @@
 (eval-and-compile
   (setq use-package-always-ensure t))
 
+(unless (package-installed-p 'corfu)
+  (package-refresh-contents)
+  (package-install 'corfu))
+
+(require 'corfu)
+
 
 ;;remove welcome screen and menu bar
 (setq inhibit-startup-screen t)
@@ -34,7 +40,7 @@
 (setq auto-save-default nil)
 (auto-save-visited-mode 1)
 (setq auto-save-visited-interval nil) ;;interval to save file
-;;auto saveing before leave :)
+;;auto saveing before leave
 (add-hook 'kill-emacs-hook
           (lambda ()
             (save-some-buffers t)))
@@ -80,13 +86,13 @@
 ;;(global-set-key (kbd "C-c h a") 'helm-org-agenda-files-headings)
 ;;(global-set-key (kbd "C-c h r") 'helm-recentf)
 
-;
+;;
 ;; Install and configure evil-collection
-;; for vim mode, switch using ESC key :)
- (use-package evil-collection
-  :after evil
-  :config
-  (evil-collection-init))
+;; for vim mode, switch using ESC key
+;; (use-package evil-collection
+;;  :after evil
+;;  :config
+;;  (evil-collection-init))
 
 (use-package dracula-theme
   :ensure t
@@ -98,7 +104,21 @@
                'dracula
                `(default ((t (:background "black"))))))))
 
+               
+;; Install and configure company-mode for auto-completion
+(use-package company
+  :ensure t
+  :config
+  (add-hook 'after-init-hook 'global-company-mode))
 
+;; Install and configure corfu for completion UI
+(use-package corfu
+  :ensure t
+  :config
+
+  
+  ;; Optionally use TAB for cycling, default is `corfu-complete`.
+  (setq corfu-cycle t))
 
 (use-package avy
     :ensure t

@@ -1,12 +1,7 @@
 #!/bin/bash
 
-# Check if the script is run as root
-if [ "$EUID" -ne 0 ]
-    then echo "Please run as root"
-    exit
-fi
 
-SCRIPT_DIR="$( cd "$( dirname "$BASH_SOURCE[0]" )" && pwd )"
+
 
 installPackage() {
     package=$1
@@ -47,21 +42,23 @@ fi
 echo "--- Running :PluginInstall ---"
 vim +PluginInstall +qall
 
+SCRIPT_DIR="$( cd "$( dirname "$BASH_SOURCE[0]" )" && pwd )"
 symlinkFile() {
     filename="$SCRIPT_DIR/$1"
-    destination="$HOME/$2/$1"
+    destination="$HOME/$2"
 
     mkdir -p $(dirname "$destination")
     
-    if [ ! -L "$destination" ]; then
-        if [ -e "$destination" ]; then
+    if [ -e "$destination" ]; then
+        if [ ! -L "$destination" ]; then
             echo "[ERROR] $destination exists but it's not a symlink. Please fix that manually" && exit 1
         else
-            ln -s "$filename" "$destination"
-            echo "[OK] $filename -> $destination"
+            ln -sf "$filename" "$destination"
+            echo "[OK] $filename -> $destination (symlink overridden)"
         fi
     else
-        echo "[WARNING] $filename already symlinked"
+        ln -s "$filename" "$destination"
+        echo "[OK] $filename -> $destination"
     fi
 }
 

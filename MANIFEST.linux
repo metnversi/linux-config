@@ -1,5 +1,5 @@
-.tmux.conf|symlink|
-.vimrc|symlink|
-i3|symlink|.config
-.i3status.conf|symlink|
-bin/hhkb-i3|symlink|
+.tmux.conf|symlink|.tmux.conf
+.vimrc|symlink|.vimrc
+i3|symlink|.config|i3
+.i3status.conf|symlink|.i3status.conf
+bin/hhkb-i3|symlink|bin/hhkb-i3

@@ -1,4 +1,4 @@
-.emacs|symlink|
-.emacs.rc|symlink|
-.emacs.snippets|symlink|
-.emacs.local|symlink|
+.emacs|symlink|.emacs
+.emacs.rc|symlink|.emacs.rc
+.emacs.snippets|symlink|.emacs.snippets
+.emacs.local|symlink|.emacs.local
