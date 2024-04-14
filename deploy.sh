@@ -27,7 +27,7 @@ echo "--- Installing Vundle ---"
 if [ ! -d ~/.vim/bundle/Vundle.vim ]; then
     git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 else
-    echo "Vundle is already installed"
+    echo "Vundle is already installed, SKIP"
 fi
 
 # Install Jellybeans
@@ -35,7 +35,7 @@ echo "--- Installing Jellybeans ---"
 if [ ! -d ~/.vim/pack/themes/start/jellybeans ]; then
     git clone https://github.com/nanotech/jellybeans.vim.git ~/.vim/pack/themes/start/jellybeans
 else
-    echo "Jellybeans is already installed"
+    echo "Jellybeans is already installed, SKIP"
 fi
 
 # Run :PluginInstall
