@@ -1,26 +1,18 @@
 #!/bin/bash
-
-
-
-
-installPackage() {
-    package=$1
-    echo "--- Installing $package ---"
-    if dpkg -s $package >/dev/null 2>&1; then
-        echo "$package is already installed, SKIP"
-    else
-        apt-get install -y $package
-    fi
+installPackages() {
+    while IFS= read -r package
+    do
+        echo "--- Installing $package ---"
+        if dpkg -s $package >/dev/null 2>&1; then
+            echo "$package is already installed, SKIP"
+        else
+            apt-get install -y $package
+        fi
+    done < "$1"
 }
 
-# Install GDB
-installPackage gdb
-
-# Install GCC multilib, cross-compilers
-installPackage gcc-multilib
-
-# Install vim-nox
-installPackage vim-nox
+# Install packages from the list
+installPackages packages.txt
 
 # Install Vundle
 echo "--- Installing Vundle ---"
