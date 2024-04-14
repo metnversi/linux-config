@@ -51,7 +51,9 @@ symlinkFile() {
     
     if [ -e "$destination" ]; then
         if [ ! -L "$destination" ]; then
-            echo "[ERROR] $destination exists but it's not a symlink. Please fix that manually" && exit 1
+            # rm -rf "$destination"
+            echo "[ERROR] $destination exists but it's not a symlink. Please fix that manually. Removed" && exit 1
+            
         else
             ln -sf "$filename" "$destination"
             echo "[OK] $filename -> $destination (symlink overridden)"

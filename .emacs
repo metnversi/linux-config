@@ -17,7 +17,6 @@
   (setq use-package-always-ensure t))
 
 (unless (package-installed-p 'corfu)
-  (package-refresh-contents)
   (package-install 'corfu))
 
 (require 'corfu)
@@ -124,6 +123,8 @@
     :ensure t
     :bind ("M-g" . avy-goto-line))
 
+
+
 (setq-default display-line-numbers 'visual)
 (setq-default display-line-numbers-widen t)
 (setq display-line-numbers-type 'relative)
@@ -143,6 +144,8 @@
 ;; Decrease font size
 (global-set-key (kbd "C--") 'text-scale-decrease)
 
+;; Set default font size
+(set-face-attribute 'default nil :height 100)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
