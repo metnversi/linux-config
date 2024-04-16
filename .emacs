@@ -19,9 +19,14 @@
 (unless (package-installed-p 'corfu)
   (package-install 'corfu))
 
+;;markdown preview
+(unless (package-installed-p 'markdown-mode)
+  (package-refresh-contents)
+  (package-install 'markdown-mode))
+
+(add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
+
 (require 'corfu)
-
-
 ;;remove welcome screen and menu bar
 (setq inhibit-startup-screen t)
 (menu-bar-mode -1)
