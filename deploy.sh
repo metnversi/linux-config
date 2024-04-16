@@ -1,4 +1,5 @@
 #!/bin/bash
+#for other linux distro, simply change the 'apt-get'. Example 'dnf', 'yum' :>
 installPackages() {
     while IFS= read -r package
     do
@@ -64,6 +65,13 @@ deployManifest() {
 
         case $operation in
             symlink)
+                symlinkFile $filename $destination
+                ;;
+
+            override)
+                if [ -L "$HOME/$destination" ]; then
+                    rm "$HOME/$destination"
+                fi
                 symlinkFile $filename $destination
                 ;;
 
