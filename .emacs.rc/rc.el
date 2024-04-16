@@ -10,9 +10,13 @@
     (setq rc/package-contents-refreshed t)
     (package-refresh-contents)))
 
+;;(defvar rc/package-contents-refreshed nil)
+
 (defun rc/require-one-package (package)
   (when (not (package-installed-p package))
-    (rc/package-refresh-contents-once)
+    (unless rc/package-contents-refreshed
+      (setq rc/package-contents-refreshed t)
+      (package-refresh-contents))
     (package-install package)))
 
 (defun rc/require (&rest packages)

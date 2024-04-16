@@ -77,20 +77,15 @@
                             (quote eval-print-last-sexp))))
 (add-to-list 'auto-mode-alist '("Cask" . emacs-lisp-mode))
 
-
-(require 'basm-mode)
-
-(require 'fasm-mode)
-(add-to-list 'auto-mode-alist '("\\.asm\\'" . fasm-mode))
-
-(require 'porth-mode)
-
-(require 'noq-mode)
-
-(require 'jai-mode)
-
-(require 'simpc-mode)
-(add-to-list 'auto-mode-alist '("\\.[hc]\\(pp\\)?\\'" . simpc-mode))
+;; assembly mode
+;;(require 'basm-mode)
+;;(require 'fasm-mode)
+;;(add-to-list 'auto-mode-alist '("\\.asm\\'" . fasm-mode))
+;;(require 'porth-mode)
+;;(require 'noq-mode)
+;;(require 'jai-mode)
+;;(require 'simpc-mode)
+;;(add-to-list 'auto-mode-alist '("\\.[hc]\\(pp\\)?\\'" . simpc-mode))
 
 ;;; Whitespace mode
 (defun rc/set-up-whitespace-handling ()
@@ -112,23 +107,13 @@
 (add-hook 'python-mode-hook 'rc/set-up-whitespace-handling)
 (add-hook 'erlang-mode-hook 'rc/set-up-whitespace-handling)
 (add-hook 'asm-mode-hook 'rc/set-up-whitespace-handling)
-(add-hook 'fasm-mode-hook 'rc/set-up-whitespace-handling)
+;;(add-hook 'fasm-mode-hook 'rc/set-up-whitespace-handling)
 (add-hook 'go-mode-hook 'rc/set-up-whitespace-handling)
 (add-hook 'nim-mode-hook 'rc/set-up-whitespace-handling)
 (add-hook 'yaml-mode-hook 'rc/set-up-whitespace-handling)
 (add-hook 'porth-mode-hook 'rc/set-up-whitespace-handling)
 
 
-;; Install and configure helm, for auto suggest finding file.
-;;; helm
-(rc/require 'helm 'helm-cmd-t 'helm-git-grep 'helm-ls-git)
-(setq helm-ff-transformer-show-only-basename nil)
-(global-set-key (kbd "C-c h t") 'helm-cmd-t)
-(global-set-key (kbd "C-c h g g") 'helm-git-grep)
-(global-set-key (kbd "C-c h g l") 'helm-ls-git-ls)
-(global-set-key (kbd "C-c h f") 'helm-find)
-(global-set-key (kbd "C-c h a") 'helm-org-agenda-files-headings)
-(global-set-key (kbd "C-c h r") 'helm-recentf)
 
 
 ;; Enable electric pair mode
@@ -232,8 +217,18 @@
 (global-set-key (kbd "C--") 'text-scale-decrease)
 
 ;; Set default font size
-(set-face-attribute 'default nil :height 100)
+(set-face-attribute 'default nil :height 120)
 
+;; Install and configure helm, for auto suggest finding file.
+;;; helm
+(rc/require 'helm 'helm-cmd-t 'helm-git-grep 'helm-ls-git)
+(setq helm-ff-transformer-show-only-basename nil)
+(global-set-key (kbd "C-c h t") 'helm-cmd-t)
+(global-set-key (kbd "C-c h g g") 'helm-git-grep)
+(global-set-key (kbd "C-c h g l") 'helm-ls-git-ls)
+(global-set-key (kbd "C-c h f") 'helm-find)
+(global-set-key (kbd "C-c h a") 'helm-org-agenda-files-headings)
+(global-set-key (kbd "C-c h r") 'helm-recentf)
 
 custom-set-variables
  ;; custom-set-variables was added by Custom.

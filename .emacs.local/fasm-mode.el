@@ -381,12 +381,12 @@
 
 
 
-
-;; (defun fasm--get-indent-level (lineoffset)
-;;   (save-excursion
-;;     (forward-line (1- lineoffset))
-;;     (back-to-indentation)
-;;     (current-column)))
+;;line offset
+ (defun fasm--get-indent-level (lineoffset)
+   (save-excursion
+     (forward-line (1- lineoffset))
+     (back-to-indentation)
+     (current-column)))
 
 (defun empty-line? ()
   (save-excursion
