@@ -1,8 +1,13 @@
-- Just saving for my custom linux i3 :)
-- Also copied some ref from my idol, rexim/dotfiles. Search him in github, and follow/sub him 'tsoding' in twitch :)
-# How to use:
+- Just saving for my custom linux: emacs, vim, tmux, bash. 
+- Also copied some (many) ref from my idol, [rexim/dotfiles](https://github.com/rexim/dotfiles). Give him 1 sub on twitch  [tsoding](https://www.twitch.tv/tsoding) or youtube [tsoding-daily](https://www.youtube.com/@TsodingDaily/featured), you will find many thing to learn on him! 
+-I just adding some my custom variable (color, layout, styles,...) :> 
+## Deploy 
 ```bash
-git clone http://github.com/metnversi/linux-config.git; 
-cd linux-config;
-sudo ./deploy.sh
+git clone http://github.com/metnversi/linux-config.git && 
+cd linux-config &&
+sudo ./deploy.sh &&
+./deploy.sh
 ```
+
+## License
+No licence. Because I steal code and combine them. Feel free with those public code because I steal public code tho haha.
