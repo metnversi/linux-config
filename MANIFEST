@@ -2,3 +2,4 @@
 .emacs.rc|symlink|.emacs.rc
 .emacs.snippets|symlink|.emacs.snippets
 .emacs.local|symlink|.emacs.local
+.gitconfig|symlink|.gitconfig
