@@ -5,3 +5,4 @@ gcc
 g++
 gcc-multilib
 g++-multilib
+vim-nox
