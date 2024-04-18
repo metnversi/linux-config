@@ -1,7 +1,3 @@
-;;(require 'package)
-;;(add-to-list 'package-archives
-;;                         '("melpa" . "https://melpa.org/packages/") t)
-
 ;; Initialize the package system if it's not already done
 (unless 
 (bound-and-true-p package--initialized)   
@@ -16,10 +12,10 @@
 
 
 ;;word font, required pre-installed in your system.
-;;here is Iosevka font, size 10
+;;here is Iosevka font, size 11
 (defun rc/get-default-font ()
   (cond 
-    ((eq system-type 'gnu/linux) "Iosevka-10")))
+    ((eq system-type 'gnu/linux) "Iosevka-11")))
 
 (add-to-list 'default-frame-alist `(font . ,(rc/get-default-font)))
 ;;remove welcome screen and menu bar
@@ -47,6 +43,7 @@
 (setq auto-save-default nil)
 (auto-save-visited-mode 1)
 (setq auto-save-visited-interval 0) ;;interval to save file: no
+
 ;;auto saving before leave
 (add-hook 'kill-emacs-hook
           (lambda ()
@@ -96,17 +93,6 @@
 ;; Enable electric pair mode
 (electric-pair-mode 1)
 (add-hook 'prog-mode-hook #'hs-minor-mode)
-               
-;; Install and configure company-mode for auto-completion
-;;; Company
-(metn/require 'company)
-(require 'company)
-(global-company-mode)
-
-(add-hook 'tuareg-mode-hook
-          (lambda ()
-            (interactive)
-            (company-mode 0)))
 
 (use-package avy
     :ensure t
