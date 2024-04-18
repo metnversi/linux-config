@@ -3,8 +3,8 @@
 ;;                         '("melpa" . "https://melpa.org/packages/") t)
 
 ;; Initialize the package system if it's not already done
-(unless (bound-and-true-p package--initialized) 
-  (setq package-enable-at-startup nil) 
+(unless 
+(bound-and-true-p package--initialized)   
   (package-initialize))
 
 (add-to-list 'load-path "~/.emacs.local/")
@@ -13,12 +13,13 @@
 
 (load "~/.emacs.rc/misc-rc.el")
 (load "~/.emacs.rc/org-mode-rc.el")
-(load "~/.emacs.rc/autocommit-rc.el")
 
 
+;;word font, required pre-installed in your system.
+;;here is Iosevka font, size 10
 (defun rc/get-default-font ()
   (cond 
-    ((eq system-type 'gnu/linux) "Iosevka-20")))
+    ((eq system-type 'gnu/linux) "Iosevka-10")))
 
 (add-to-list 'default-frame-alist `(font . ,(rc/get-default-font)))
 ;;remove welcome screen and menu bar
@@ -29,10 +30,13 @@
 (column-number-mode 1)
 (show-paren-mode 1)
 
-(rc/require-theme 'gruber-darker)
+(metn/require-theme 'gruber-darker)
 
-;;set font size
-(set-face-attribute 'default nil :height 140)
+(setq package-install-upgrade-built-in t)
+
+;;set font size, 
+;;(set-face-attribute 'default nil :height 100)
+;;enable emacs clipboard same system clipboard
 (setq x-select-enable-clipboard t)
 (setq x-select-enable-primary t)
 (setq save-interprogram-paste-before-kill t)
@@ -42,14 +46,14 @@
 ;;auto save
 (setq auto-save-default nil)
 (auto-save-visited-mode 1)
-(setq auto-save-visited-interval nil) ;;interval to save file
-;;auto saveing before leave
+(setq auto-save-visited-interval 0) ;;interval to save file: no
+;;auto saving before leave
 (add-hook 'kill-emacs-hook
           (lambda ()
             (save-some-buffers t)))
 
 ;; Enable ido mode
-(rc/require 'smex 'ido-completing-read+)
+(metn/require 'smex 'ido-completing-read+)
 (require 'ido-completing-read+)
 (ido-mode 1)
 (ido-everywhere 1)
@@ -58,6 +62,8 @@
 ;;line number green
 (setq-default display-line-numbers 'visual)
 (setq-default display-line-numbers-widen t)
+
+;;you can set it relative number here or in the custom variable in the bottom
 (setq display-line-numbers-type 'relative)
 (set-face-attribute 'line-number-current-line nil
                     :foreground "green")
@@ -114,24 +120,14 @@
 (add-hook 'porth-mode-hook 'rc/set-up-whitespace-handling)
 
 
-
-
 ;; Enable electric pair mode
 (electric-pair-mode 1)
-;; Bind C-= to zoom in
-(global-set-key (kbd "C-=") 'text-scale-increase)
-
-;; Bind C-- to zoom out
-(global-set-key (kbd "C--") 'text-scale-decrease)
-
 (add-hook 'prog-mode-hook #'hs-minor-mode)
-
                
 ;; Install and configure company-mode for auto-completion
 ;;; Company
-(rc/require 'company)
+(metn/require 'company)
 (require 'company)
-
 (global-company-mode)
 
 (add-hook 'tuareg-mode-hook
@@ -143,9 +139,8 @@
     :ensure t
     :bind ("M-g" . avy-goto-line))
 
-
 ;;; Packages that don't require configuration
-(rc/require
+(metn/require
  'scala-mode
  'd-mode
  'yaml-mode
@@ -164,7 +159,6 @@
  'purescript-mode
  'nix-mode
  'dockerfile-mode
- 'love-minor-mode
  'toml-mode
  'nginx-mode
  'kotlin-mode
@@ -200,6 +194,8 @@
 
 (require 'compile)
 
+(global-set-key (kbd "C-=") 'text-scale-increase)
+(global-set-key (kbd "C--") 'text-scale-decrease)
 
 (defun jump-relative (line)
     "Jump to a line relative to the current line."
@@ -210,59 +206,32 @@
 (global-set-key (kbd "<f5>") '(lambda () (interactive) (revert-buffer nil t t)))
 
 ;; change font size
+;;(set-face-attribute 'default nil :height 120)
 ;; Increase font size
 (global-set-key (kbd "C-+") 'text-scale-increase)
-
-;; Decrease font size
 (global-set-key (kbd "C--") 'text-scale-decrease)
+;;key to refresh emacs
+(global-set-key (kbd "<f5>") '(lambda () (interactive) (revert-buffer nil t t)))
 
-;; Set default font size
-(set-face-attribute 'default nil :height 120)
 
-;; Install and configure helm, for auto suggest finding file.
-;;; helm
-(rc/require 'helm 'helm-cmd-t 'helm-git-grep 'helm-ls-git)
-(setq helm-ff-transformer-show-only-basename nil)
-(global-set-key (kbd "C-c h t") 'helm-cmd-t)
-(global-set-key (kbd "C-c h g g") 'helm-git-grep)
-(global-set-key (kbd "C-c h g l") 'helm-ls-git-ls)
-(global-set-key (kbd "C-c h f") 'helm-find)
-(global-set-key (kbd "C-c h a") 'helm-org-agenda-files-headings)
-(global-set-key (kbd "C-c h r") 'helm-recentf)
+;;move whole line up and down
+(defun move-line-up ()
+  "Move up the current line."
+  (interactive)
+  (transpose-lines 1)
+  (forward-line -2)
+  (indent-according-to-mode))
 
-custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(display-line-numbers-type (quote relative))
- '(org-agenda-dim-blocked-tasks nil)
- '(org-agenda-exporter-settings (quote ((org-agenda-tag-filter-preset (list "+personal")))))
- '(org-cliplink-transport-implementation (quote url-el))
- '(org-enforce-todo-dependencies nil)
- '(org-modules
-   (quote
-    (org-bbdb org-bibtex org-docview org-gnus org-habit org-info org-irc org-mhe org-rmail org-w3m)))
- '(org-refile-use-outline-path (quote file))
- '(package-selected-packages
-   (quote
-    (rainbow-mode proof-general elpy hindent ag qml-mode racket-mode php-mode go-mode kotlin-mode nginx-mode toml-mode love-minor-mode dockerfile-mode nix-mode purescript-mode markdown-mode jinja2-mode nim-mode csharp-mode rust-mode cmake-mode clojure-mode graphviz-dot-mode lua-mode tuareg glsl-mode yaml-mode d-mode scala-mode move-text nasm-mode editorconfig tide company powershell js2-mode yasnippet helm-ls-git helm-git-grep helm-cmd-t helm multiple-cursors magit haskell-mode paredit ido-completing-read+ smex gruber-darker-theme org-cliplink dash-functional dash)))
- '(safe-local-variable-values
-   (quote
-    ((eval progn
-           (auto-revert-mode 1)
-           (rc/autopull-changes)
-           (add-hook
-            (quote after-save-hook)
-            (quote rc/autocommit-changes)
-            nil
-            (quote make-it-local))))))
- '(whitespace-style
-   (quote
-    (face tabs spaces trailing space-before-tab newline indentation empty space-after-tab space-mark tab-mark))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
+(defun move-line-down ()
+  "Move down the current line."
+  (interactive)
+  (forward-line 1)
+  (transpose-lines 1)
+  (forward-line -1)
+  (indent-according-to-mode))
+
+(global-set-key (kbd "M-<up>") 'move-line-up)
+(global-set-key (kbd "M-<down>") 'move-line-down)
+
+
+
