@@ -15,6 +15,19 @@ installPackages() {
 # Install packages from the list
 installPackages packages.txt
 
+# Install Iosevka font
+echo "--- Installing Iosevka font ---"
+if fc-list | grep -i "Iosevka" > /dev/null; then
+    echo "Iosevka font is already installed, SKIP"
+else
+    wget https://github.com/be5invis/Iosevka/releases/download/v3.7.1/ttf-iosevka-3.7.1.zip -P ~/Downloads
+    unzip ~/Downloads/ttf-iosevka-3.7.1.zip -d ~/Downloads
+    mkdir -p ~/.fonts
+    mv ~/Downloads/ttf/*.ttf ~/.fonts/
+    fc-cache -f -v
+    echo "Installed font Iosevka, check ~/Downloads/ for archiving"
+fi
+
 # Install Vundle
 echo "--- Installing Vundle ---"
 if [ ! -d ~/.vim/bundle/Vundle.vim ]; then
@@ -35,7 +48,7 @@ fi
 echo "--- Running :PluginInstall ---"
 vim +PluginInstall +qall
 
-SCRIPT_DIR="$( cd "$( dirname "$BASH_SOURCE[0]" )" && pwd )"
+SCRIPT_DIR="$( cd "$( dirname "$BASH_SOUrcE[0]" )" && pwd )"
 symlinkFile() {
     filename="$SCRIPT_DIR/$1"
     destination="$HOME/$2"
