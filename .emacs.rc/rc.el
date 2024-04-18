@@ -3,36 +3,41 @@
 ;; (add-to-list 'package-archives
 ;;              '("melpa-stable" . "https://stable.melpa.org/packages/") t)
 
-(defvar rc/package-contents-refreshed nil)
+;;(defvar rc/package-contents-refreshed nil)
 
-(defun rc/package-refresh-contents-once ()
-  (when (not rc/package-contents-refreshed)
-    (setq rc/package-contents-refreshed t)
-    (package-refresh-contents)))
+;;(defun rc/package-refresh-contents-once ()
+;;  (when (not rc/package-contents-refreshed)
+;;    (setq rc/package-contents-refreshed t)
+;;    (package-refresh-contents)))
 
 ;;(defvar rc/package-contents-refreshed nil)
 
-(defun rc/require-one-package (package)
-  (when (not (package-installed-p package))
-    (unless rc/package-contents-refreshed
-      (setq rc/package-contents-refreshed t)
-      (package-refresh-contents))
-    (package-install package)))
+;;metn/require to install package
+(defun metn/require-one-package (package)
+  (if package
+      (if (not (package-installed-p package))
+          (progn
+            (if rc/package-contents-refreshed
+                nil
+              (setq rc/package-contents-refreshed t)
+              (package-refresh-contents))
+            (package-install package)))
+    (error "Package name cannot be nil")))
 
-(defun rc/require (&rest packages)
+(defun metn/require (&rest packages)
   (dolist (package packages)
-    (rc/require-one-package package)))
+    (metn/require-one-package package)))
 
-(defun rc/require-theme (theme)
+(defun metn/require-theme (theme)
   (let ((theme-package (->> theme
                             (symbol-name)
                             (funcall (-flip #'concat) "-theme")
                             (intern))))
-    (rc/require theme-package)
+    (metn/require theme-package)
     (load-theme theme t)))
 
-(rc/require 'dash)
+(metn/require 'dash)
 (require 'dash)
 
-(rc/require 'dash-functional)
+(metn/require 'dash-functional)
 (require 'dash-functional)
