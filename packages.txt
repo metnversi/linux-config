@@ -3,6 +3,7 @@ emacs
 tmux
 i3
 i3lock
+xautolock
 i3status
 gcc
 g++
