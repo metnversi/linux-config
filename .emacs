@@ -12,10 +12,10 @@
 
 
 ;;word font, required pre-installed in your system.
-;;here is Iosevka font, size 11
+;;here is Iosevka font, size 12
 (defun rc/get-default-font ()
   (cond 
-    ((eq system-type 'gnu/linux) "Iosevka-11")))
+    ((eq system-type 'gnu/linux) "Iosevka-12")))
 
 (add-to-list 'default-frame-alist `(font . ,(rc/get-default-font)))
 ;;remove welcome screen and menu bar
