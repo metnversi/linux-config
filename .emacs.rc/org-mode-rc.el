@@ -41,7 +41,7 @@
 
 ;;; org-cliplink
 
-(rc/require 'org-cliplink)
+(metn/require 'org-cliplink)
 
 (global-set-key (kbd "C-x p i") 'org-cliplink)
 
