@@ -1,6 +1,7 @@
 .tmux.conf|symlink|.tmux.conf
 .vimrc|symlink|.vimrc
 .bashrc|symlink|.bashrc
+lock.sh|symlink|lock.sh
 config|symlink|.config/i3/config
 .i3status.conf|symlink|.i3status.conf
 bin/hhkb-i3|symlink|bin/hhkb-i3
