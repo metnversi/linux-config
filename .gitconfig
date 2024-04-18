@@ -6,4 +6,4 @@
 	helper = !/usr/bin/gh auth git-credential
 [user]
 	email = vinh.nt202727@sis.hust.edu.vn
-	name = metnversi
+	name = rcversi
