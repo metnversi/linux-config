@@ -3,7 +3,7 @@
 -I just adding some my custom variable (color, layout, styles,...) :> 
 ## Deploy 
 ```bash
-git clone http://github.com/metnversi/linux-config.git && 
+git clone http://github.com/rcversi/linux-config.git && 
 cd linux-config &&
 sudo ./deploy.sh &&
 ./deploy.sh
