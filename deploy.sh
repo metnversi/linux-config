@@ -95,7 +95,7 @@ deployManifest() {
     done
 }
 
-echo "--- Common configs ---"
-deployManifest MANIFEST
+# echo "--- Common configs ---"
+# deployManifest MANIFEST
 echo "--- Linux configs ---"
 deployManifest MANIFEST.linux
