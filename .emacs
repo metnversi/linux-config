@@ -4,18 +4,15 @@
   (package-initialize))
 
 (add-to-list 'load-path "~/.emacs.local/")
-
 (load "~/.emacs.rc/rc.el")
-
 (load "~/.emacs.rc/misc-rc.el")
 (load "~/.emacs.rc/org-mode-rc.el")
 
-
-;;word font, required pre-installed in your system.
-;;here is Iosevka font, size 12
+;; word font, required pre-installed in your system.
+;; here is Iosevka font, size 10
 (defun rc/get-default-font ()
   (cond 
-    ((eq system-type 'gnu/linux) "Iosevka-12")))
+    ((eq system-type 'gnu/linux) "Iosevka-10")))
 
 (add-to-list 'default-frame-alist `(font . ,(rc/get-default-font)))
 ;;remove welcome screen and menu bar
@@ -27,17 +24,14 @@
 (show-paren-mode 1)
 
 (metn/require-theme 'gruber-darker)
-
 (setq package-install-upgrade-built-in t)
 
-;;set font size, 
-;;(set-face-attribute 'default nil :height 100)
-;;enable emacs clipboard same system clipboard
+;; set font size, 
+;; enable emacs clipboard same system clipboard
 (setq x-select-enable-clipboard t)
 (setq x-select-enable-primary t)
 (setq save-interprogram-paste-before-kill t)
 (setq yank-pop-change-selection t)
-
 
 ;;auto save
 (setq auto-save-default nil)
@@ -165,7 +159,7 @@
 (global-set-key (kbd "<f5>") '(lambda () (interactive) (revert-buffer nil t t)))
 
 ;; change font size
-;;(set-face-attribute 'default nil :height 120)
+;; (set-face-attribute 'default nil :height 120)
 ;; Increase font size
 (global-set-key (kbd "C-+") 'text-scale-increase)
 (global-set-key (kbd "C--") 'text-scale-decrease)
@@ -188,7 +182,7 @@
   (transpose-lines 1)
   (forward-line -1)
   (indent-according-to-mode))
-
+;; ALT + up/down  to move a whole line up and down like visual Studio code :)
 (global-set-key (kbd "M-<up>") 'move-line-up)
 (global-set-key (kbd "M-<down>") 'move-line-down)
 
