@@ -109,7 +109,7 @@ export QT_IM_MODULE=ibus
 
 # raylib path for programming
 # should be changing approariately
-export PATH=$PATH:$HOME/repos/raylib/build/raylib
+# export PATH=$PATH:$HOME/repos/raylib/build/raylib
 # Alias definitions.
 # You may want to put all your additions into a separate file like
 # ~/.bash_aliases, instead of adding them here directly.
@@ -132,3 +132,4 @@ fi
 alias ls='ls --color=auto -l'
 export LS_COLORS="di=34:fi=37"
 export PATH=$PATH:/usr/bin
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib
