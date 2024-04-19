@@ -10,3 +10,5 @@ g++
 gcc-multilib
 g++-multilib
 vim-nox
+libopenscenegraph-dev
+qttools5-dev
