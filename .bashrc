@@ -129,6 +129,6 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
-export PATH=$PATH:/opt/foxitsoftware/foxitreader
 alias ls='ls --color=auto -l'
 export LS_COLORS="di=34:fi=37"
+export PATH=$PATH:/usr/bin
