@@ -97,11 +97,17 @@ alias cl='clear'
 alias c='clear'
 alias gg='google-chrome &'
 alias ggt='google-chrome "translate.google.com" &'
+alias fft='firefox "translate.google.com" &'
+alias ff='firefox &'
 alias b='bash --login'
 alias s='sudo shutdown -h now'
 export GTK_IM_MODULE=ibus
 export XMODIFIERS=@im=ibus
 export QT_IM_MODULE=ibus
+
+# raylib path for programming
+# should be changing approariately
+export PATH=$PATH:$HOME/repos/raylib/build/raylib
 # Alias definitions.
 # You may want to put all your additions into a separate file like
 # ~/.bash_aliases, instead of adding them here directly.
