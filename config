@@ -186,7 +186,7 @@ exec --no-startup-id xrandr -s 1920x1080
 exec --no-startup-id xrandr --dpi 120
 exec --no-startup-id ibus-daemon -drx
 # exec --no-startup-id xss-lock -- ~/lock.sh
-exec "xautolock -detectsleep -time 1 -locker ~/lock.sh"
+exec "xautolock -detectsleep -time 2 -locker ~/lock.sh"
 bindsym $mod+r mode "resize"
 bindsym $mod+Shift+x exec ~/lock.sh
 
