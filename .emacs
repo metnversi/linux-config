@@ -186,5 +186,18 @@
 (global-set-key (kbd "M-<up>") 'move-line-up)
 (global-set-key (kbd "M-<down>") 'move-line-down)
 
+(add-hook 'after-init-hook 'global-company-mode)
 
-
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages
+   '(company-statistics yasnippet-snippets yaml-mode windresize use-package typescript-mode tuareg toml-mode sml-mode smex scala-mode rust-mode rfc-mode racket-mode qml-mode purescript-mode php-mode paredit org-cliplink nix-mode nim-mode nginx-mode multiple-cursors magit lua-mode lsp-mode kotlin-mode jinja2-mode ido-completing-read+ hindent helm haskell-mode gruber-darker-theme graphviz-dot-mode go-mode glsl-mode evil embark elpy dracula-theme dockerfile-mode dash-functional d-mode csharp-mode corfu company-c-headers cmake-mode clojure-mode cape avy ag 0x0)))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
