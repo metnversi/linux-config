@@ -1,5 +1,5 @@
 - This repository saves my configurations for the Debian-based distro, including Vim, Emacs, Bash, i3, and Tmux.
-- I also copied some (or many) references from my coding idol, rexim/dotfiles: https://github.com/rexim/dotfiles. You can learn a lot from Rexim by subscribing to his channels: tsoding: https://www.twitch.tv/tsoding on Twitch and tsoding-daily: https://www.youtube.com/@TsodingDaily/featured on YouTube.
+- I also copied some (or many) references from my coding idol, [rexim/dotfiles](https://github.com/rexim/dotfiles). You can learn a lot from Rexim by subscribing to his channels: [tsoding]( https://www.twitch.tv/tsoding) on Twitch and [tsoding-daily]( https://www.youtube.com/@TsodingDaily/featured) on YouTube.
 - While Rexim might not find it difficult to remove unnecessary whitespace and refresh packages on every Emacs startup, I do. That's why I unbound his special keybindings and added my own custom variables for colors, layout, styles, and some functions.
 
 ## How to Customize:
