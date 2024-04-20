@@ -1,26 +1,26 @@
-- This repos saving for my debian-base distro configure: vim, emacs, bash, i3, tmux.
-- Also copied some (many) ref from my idol, [rexim/dotfiles](https://github.com/rexim/dotfiles). Give him 1 sub on twitch  [tsoding](https://www.twitch.tv/tsoding) or youtube [tsoding-daily](https://www.youtube.com/@TsodingDaily/featured), you will find many thing to learn on him! 
-- Delete stupid white space and refresh package each time start emacs. Maybe Rexim dont think thats hard to use, but I do.
-- I unbinded all his spec key, also adding some my custom variable (color, layout, styles, some function...)
-## How to custom:
-### emacs
-- Notice the `.emacs.rc/rc.el`. Its where you define package refresh and installing behavior
-- Next check `.emacs`: here is where you define package installing,  function and custom key binding.
+- This repository saves my configurations for the Debian-based distro, including Vim, Emacs, Bash, i3, and Tmux.
+- I also copied some (or many) references from my coding idol, rexim/dotfiles: https://github.com/rexim/dotfiles. You can learn a lot from Rexim by subscribing to his channels: tsoding: https://www.twitch.tv/tsoding on Twitch and tsoding-daily: https://www.youtube.com/@TsodingDaily/featured on YouTube.
+- While Rexim might not find it difficult to remove unnecessary whitespace and refresh packages on every Emacs startup, I do. That's why I unbound his special keybindings and added my own custom variables for colors, layout, styles, and some functions.
+
+## How to Customize:
+### Emacs
+- Pay attention to the `.emacs.rc` or `.emacs.d` file (depending on your setup). This is where you define package refresh and installation behavior.
+- Next, check the `.emacs` file. This is where you define package installation, functions, and custom key bindings.
 ```bash
 (add-to-list 'load-path "~/.emacs.local/")
-(load "~/.emacs.rc/rc.el")
-(load "~/.emacs.rc/misc-rc.el")
-(load "~/.emacs.rc/org-mode-rc.el")
+(load "~/.emacs.rc")
+(load "~/.emacs.d/misc-rc.el")  ; Assuming misc customizations are in misc-rc.el
+(load "~/.emacs.d/org-mode-rc.el")  ; Assuming Org mode customizations are in org-mode-rc.el
 ```
-### vim
-- Just check vim documentation or rexim sample one. I dont using his.
-## Deploy 
-- Make sure you have some knowledge about Emacs and Linux first before decide to deployin. 
-```bash
-git clone http://github.com/metnversi/linux-config.git
+### Vim
+- Refer to the Vim documentation or use Rexim's sample configuration as a starting point (although I prefer my own setup).
+## Deployment
+- It's recommended to have some basic understanding of Emacs and Linux before deploying this configuration.
+- Improved Deployment Script (assuming the script is named `deploy.sh`):
+```Bash
+git clone https://github.com/metnversi/linux-config.git
 cd linux-config
-sudo ./deploy.sh
 ./deploy.sh
 ```
-## License
-No licence. Because I steal code and combine them. Feel free with those public code because I steal public code tho haha.
+## License:
+This configuration does not have a specific license. It combines publicly available code, and you are free to use it for your own purposes since the source code is public.
