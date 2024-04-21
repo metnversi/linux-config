@@ -88,6 +88,7 @@
 (electric-pair-mode 1)
 (add-hook 'prog-mode-hook #'hs-minor-mode)
 
+;; in emacs version older, use-package will be resulted as an error. Comment this out may help.
 (use-package avy
     :ensure t
     :bind ("M-g" . avy-goto-line))
@@ -186,7 +187,16 @@
 (global-set-key (kbd "M-<up>") 'move-line-up)
 (global-set-key (kbd "M-<down>") 'move-line-down)
 
+(metn/require 'company)
 (add-hook 'after-init-hook 'global-company-mode)
+
+;; Add company-c-headers to company-backends
+(add-to-list 'company-backends 'company-c-headers)
+;; Specify the system headers path for company-c-headers
+(add-to-list 'company-c-headers-path-system "/usr/include/c++/12/")
+(add-to-list 'company-c-headers-path-system "/usr/include/x86_64-linux-gnu/c++/12")
+;; Specify the project headers path for company-c-headers
+(add-to-list 'company-c-headers-path-user "/path/to/your/project/headers/")
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
