@@ -151,6 +151,9 @@ bindsym $mod+Shift+8 move container to workspace number $ws8
 bindsym $mod+Shift+9 move container to workspace number $ws9
 bindsym $mod+Shift+0 move container to workspace number $ws10
 
+# start emacs in full screen
+bindsym $mod+z exec emacs -fs
+
 # reload the configuration file
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
@@ -186,7 +189,7 @@ exec --no-startup-id xrandr -s 1920x1080
 exec --no-startup-id xrandr --dpi 120
 exec --no-startup-id ibus-daemon -drx
 # exec --no-startup-id xss-lock -- ~/lock.sh
-exec "xautolock -detectsleep -time 2 -locker ~/lock.sh"
+exec "xautolock -detectsleep -time 3 -locker ~/lock.sh"
 bindsym $mod+r mode "resize"
 bindsym $mod+Shift+x exec ~/lock.sh
 
