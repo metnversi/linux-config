@@ -103,6 +103,7 @@ alias ff='firefox &'
 alias ffg='firefox "github.com" &'
 alias b='bash --login'
 alias s='sudo shutdown -h now'
+alias kubectl="minikube kubectl --"
 export GTK_IM_MODULE=ibus
 export XMODIFIERS=@im=ibus
 export QT_IM_MODULE=ibus
