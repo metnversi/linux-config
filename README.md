@@ -43,5 +43,3 @@ sudo ./deploy.sh
 ```
 after done installed all package for emacs, you can comment them out again to avoid refrshing package each time start up.
 
-## License:
-This configuration does not have a specific license. It combines publicly available code, and you are free to use it for your own purposes since the source code is public.
