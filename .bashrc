@@ -89,21 +89,14 @@ export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quo
 
 # some more ls aliases
 alias ll='ls -l'
-alias la='ls -A'
+alias la='ls -a'
 alias l='ls -CF'
 alias clr='clear'
 alias clea='clear'
-alias cl='clear'
-alias c='clear'
 alias gg='google-chrome &'
-alias ggt='google-chrome "translate.google.com" &'
-alias ggg='google-chrome "github.com" &'
-alias fft='firefox "translate.google.com" &'
-alias ff='firefox &'
-alias ffg='firefox "github.com" &'
-alias b='bash --login'
-alias s='sudo shutdown -h now'
+
 alias kubectl="minikube kubectl --"
+
 export GTK_IM_MODULE=ibus
 export XMODIFIERS=@im=ibus
 export QT_IM_MODULE=ibus
@@ -130,7 +123,6 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
-alias ls='ls --color=auto -l'
 export LS_COLORS="di=34:fi=37"
 export PATH=$PATH:/usr/bin
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib
