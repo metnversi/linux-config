@@ -57,7 +57,7 @@ bindsym $mod+Shift+q kill
 # start dmenu (a program launcher)
 # A more modern dmenu replacement is rofi:
 
-
+workspace_layout tabbed
 
 # bindcode $mod+40 exec "rofi -modi drun,run -show drun"
 # There also is i3-dmenu-desktop which only displays applications shipping a
