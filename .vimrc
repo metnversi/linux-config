@@ -15,7 +15,6 @@ call vundle#begin()
 
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'VundleVim/Vundle.vim'
-# Plugin 'ycm-core/YouCompleteMe'
 
 call vundle#end()
 
