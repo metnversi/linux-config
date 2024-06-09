@@ -222,3 +222,6 @@ bar {
   }
 }
 bindsym $mod+d exec "dmenu_run -nf '#BBBBBB' -nb '#222222' -sb '#128D09' -sf '#EEEEEE' -fn 'monospace-10' -p 'dmenu prompt &gt;'"
+bindsym Mod1+space exec --no-startup-id ibus engine xkb:us::eng
+#remember: ibus-daemon -rdx to restart ibus after ibus-setup
+226 bindsym Mod1+Shift+space exec --no-startup-id ibus engine Unikey #use for unikey Vietnamese input
