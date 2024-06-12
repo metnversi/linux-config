@@ -72,7 +72,7 @@ echo "--- Running :PluginInstall ---"
 vim +PluginInstall +qall
 echo "--- Done install Vim Plugin ---"
 
-read -p "Do you want to install AWC CLI it? [Y/n] " -n 1 -r
+read -p "Do you want to install AWC CLI? [Y/n] " -n 1 -r
 echo    # move to a new line
 if [[ ! $REPLY =~ ^[Nn]$ ]]
 then
@@ -88,5 +88,5 @@ then
     echo "optional: minIO,google-chrome, search by yourself!"
 else
     echo "--- Skipping AWS ---"
-    echo "--- HELLO WORLD!"
+    echo "--- HELLO WORLD! ---"
 fi
