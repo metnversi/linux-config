@@ -1,53 +1,5 @@
 #!/bin/bash
 #for other linux distro, simply change the 'apt-get'. Example 'dnf', 'yum' :>
-installPackages() {
-    while IFS= read -r package
-    do
-        echo "--- Installing $package ---"
-        if dpkg -s $package >/dev/null 2>&1; then
-            echo "$package is already installed, SKIP"
-        else
-            apt-get install -y $package
-        fi
-    done < "$1"
-}
-
-# Install packages from the list
-installPackages packages.txt
-
-# Install Iosevka font
-echo "--- Installing Iosevka font ---"
-if fc-list | grep -i "Iosevka" > /dev/null; then
-    echo "Iosevka font is already installed, SKIP"
-else
-    wget https://github.com/be5invis/Iosevka/releases/download/v3.7.1/ttf-iosevka-3.7.1.zip -P ~/Downloads
-    unzip ~/Downloads/ttf-iosevka-3.7.1.zip -d ~/Downloads
-    mkdir -p ~/.fonts
-    mv ~/Downloads/ttf/*.ttf ~/.fonts/
-    fc-cache -f -v
-    echo "Installed font Iosevka, check ~/Downloads/ for archiving"
-fi
-
-# Install Vundle
-echo "--- Installing Vundle ---"
-if [ ! -d ~/.vim/bundle/Vundle.vim ]; then
-    git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-else
-    echo "Vundle is already installed, SKIP"
-fi
-
-# Install Jellybeans
-echo "--- Installing Jellybeans ---"
-if [ ! -d ~/.vim/pack/themes/start/jellybeans ]; then
-    git clone https://github.com/nanotech/jellybeans.vim.git ~/.vim/pack/themes/start/jellybeans
-else
-    echo "Jellybeans is already installed, SKIP"
-fi
-
-# Run :PluginInstall
-echo "--- Running :PluginInstall ---"
-vim +PluginInstall +qall
-
 SCRIPT_DIR="$( cd "$( dirname "$BASH_SOUrcE[0]" )" && pwd )"
 symlinkFile() {
     filename="$SCRIPT_DIR/$1"
