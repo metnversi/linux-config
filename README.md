@@ -38,7 +38,6 @@ cd linux-config
 ```
 - Exit all editor. run:
 ```Bash
-sudo ./deploy.sh
 ./deploy.sh
 ```
 after done installed all package for emacs, you can comment them out again to avoid refrshing package each time start up.
