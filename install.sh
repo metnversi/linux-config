@@ -90,3 +90,14 @@ else
     echo "--- Skipping AWS ---"
     echo "--- HELLO WORLD! ---"
 fi
+
+echo "---Install betterlockscreen---"
+wget https://raw.githubusercontent.com/betterlockscreen/betterlockscreen/main/install.sh -O - -q | sudo bash -s system
+mkdir -p ~/.config/betterlockscreen/
+sudo cp ./betterlockscreen@.service /usr/lib/systemd/system/
+sudo systemctl enable betterlockscreen@$USER
+sudo systemctl start betterlockscreen@$USER
+betterlockscreen -u ~/Pictures/bg-e7.png
+echo "--System is going to reboot after 5s!--"
+sleep 5
+sudo reboot
