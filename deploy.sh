@@ -51,3 +51,13 @@ deployManifest() {
 # deployManifest MANIFEST
 echo "--- Linux configs ---"
 deployManifest MANIFEST.linux
+
+read -p "Do you want to install essential package [Y/n] " -n 1 -r
+echo    # move to a new line
+if [[ ! $REPLY =~ ^[Nn]$ ]]
+then
+    sudo "$(dirname $0)/install.sh"
+else
+    echo "--- HELLO WORLD! ---"
+fi
+
