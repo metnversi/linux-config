@@ -1,9 +1,51 @@
 #!/bin/bash
 
-if [ "$EUID" -ne 0 ]
-  then echo "Please run as root or use sudo"
-  exit
+# Install Iosevka font
+echo "--- Installing Iosevka font ---"
+if fc-list | grep -i "Iosevka" > /dev/null; then
+    echo "Iosevka font is already installed, SKIP"
+else
+    read -p "Do you want to install Iosevka font? (Y/n) " install
+    case ${install:0:1} in
+        n|N )
+            echo "Skipping installation of Iosevka font"
+        ;;
+        * )
+            read -p "Do you want to download Iosevka font? (Y/n) " download
+            case ${download:0:1} in
+                n|N )
+                    echo "Skipping download of Iosevka font"
+                ;;
+                * )
+                    wget https://github.com/be5invis/Iosevka/releases/download/v30.1.2/PkgTTC-Iosevka-30.1.2.zip -P /home/$USER/Downloads
+                ;;
+            esac
+            unzip /home/$USER/Downloads/*Iosevka*.zip -d /home/$USER/Downloads
+            sudo mv /home/$USER/Downloads/ttf/*.ttf /usr/share/fonts/
+            sudo fc-cache -f -v
+            echo "Installed font Iosevka, check ~/Downloads/ for archiving"
+        ;;
+    esac
 fi
+
+echo "-- Installing Vim plugins"
+echo "--- Installing Vundle ---"
+if [ ! -d /home/$USER/.vim/bundle/Vundle.vim ]; then
+    git clone https://github.com/VundleVim/Vundle.vim.git /home/$USER/.vim/bundle/Vundle.vim
+else
+    echo "Vundle is already installed, SKIP"
+fi
+echo "--- Installing Jellybeans ---"
+if [ ! -d /home/$USER/.vim/pack/themes/start/jellybeans ]; then
+    git clone https://github.com/nanotech/jellybeans.vim.git /home/$USER/.vim/pack/themes/start/jellybeans
+else
+    echo "Jellybeans is already installed, SKIP"
+fi
+
+echo "--- Running :PluginInstall ---"
+vim +PluginInstall +qall
+echo "--- Done install Vim Plugin ---"
+
 
 installPackages() {
     while IFS= read -r package
@@ -35,43 +77,11 @@ installPackages() {
         if dpkg -s $package >/dev/null 2>&1; then
             echo "$package is already installed, SKIP"
         else
-            apt-get install -y $package
+            sudo apt-get install -y $package
         fi
     done < "$1"
 }
 installPackages packages.txt
-
-# Install Iosevka font
-echo "--- Installing Iosevka font ---"
-if fc-list | grep -i "Iosevka" > /dev/null; then
-    echo "Iosevka font is already installed, SKIP"
-else
-    wget https://github.com/be5invis/Iosevka/releases/download/v30.1.2/PkgTTC-Iosevka-30.1.2.zip -P ~/Downloads
-    unzip ~/Downloads/*zip -d ~/Downloads
-    mkdir -p ~/.fonts
-    sudo mv ~/Downloads/ttf/*.ttf /usr/share/fonts/
-    sudo fc-cache -f -v
-    echo "Installed font Iosevka, check ~/Downloads/ for archiving"
-fi
-
-echo "-- Installing Vim plugins"
-echo "--- Installing Vundle ---"
-if [ ! -d ~/.vim/bundle/Vundle.vim ]; then
-    git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-else
-    echo "Vundle is already installed, SKIP"
-fi
-echo "--- Installing Jellybeans ---"
-if [ ! -d ~/.vim/pack/themes/start/jellybeans ]; then
-    git clone https://github.com/nanotech/jellybeans.vim.git ~/.vim/pack/themes/start/jellybeans
-else
-    echo "Jellybeans is already installed, SKIP"
-fi
-
-echo "--- Running :PluginInstall ---"
-vim +PluginInstall +qall
-echo "--- Done install Vim Plugin ---"
-
 read -p "Do you want to install AWC CLI? [Y/n] " -n 1 -r
 echo    # move to a new line
 if [[ ! $REPLY =~ ^[Nn]$ ]]
