@@ -20,9 +20,10 @@ else
                     wget https://github.com/be5invis/Iosevka/releases/download/v30.1.2/PkgTTC-Iosevka-30.1.2.zip -P /home/$USER/Downloads
                 ;;
             esac
-            unzip /home/$USER/Downloads/*Iosevka*.zip -d /home/$USER/Downloads
-            sudo mv /home/$USER/Downloads/ttf/*.ttf /usr/share/fonts/
-            sudo fc-cache -f -v
+            unzip /home/$USER/Downloads/*Iosevka*.zip -d /home/$USER/Downloads/Iosevka
+            mkdir /home/$USER/.fonts
+            sudo mv /home/$USER/Downloads/ttf/*.ttf /home/$USER/.fonts
+            sudo fc-cache
             echo "Installed font Iosevka, check ~/Downloads/ for archiving"
         ;;
     esac
