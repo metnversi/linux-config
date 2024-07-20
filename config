@@ -67,7 +67,7 @@ workspace_layout tabbed
 # change focus
 bindsym $mod+j focus left
 bindsym $mod+k focus down
-bindsym $mod+l focus up
+#bindsym $mod+l focus up
 bindsym $mod+semicolon focus right
 
 # alternatively, you can use the cursor keys:
@@ -230,11 +230,16 @@ bar {
 bindsym $mod+d exec "dmenu_run -nf '#BBBBBB' -nb '#222222' -sb '#128D09' -sf '#EEEEEE' -fn 'monospace-10' -p 'dmenu prompt &gt;'"
 bindsym Mod1+space exec --no-startup-id ibus engine xkb:us::eng
 exec --no-startup-id redshift -O 3500
-exec --no-startup-id gromit-mpx
+exec --no-startup-id xbacklight -set 82
+#exec --no-startup-id gromit-mpx
 exec --no-startup-id copyq
 bindsym $mod+v exec --no-startup-id copyq menu
 bindsym $mod+p exec --no-startup-id copy
+bindsym $mod+Shift+a exec --no-startup-id /home/anna/linkpomo.sh
 #bindsym $mod+m exec --no-startup-id grompit-mpx --magnifier
 bindsym Mod1+Shift+space exec --no-startup-id ibus engine Unikey
-bindsym $mod+Shift+v exec --no-startup-id shutter -f
+bindsym F10 exec --no-startup-id shutter -f
 bindsym $mod+Shift+s exec --no-startup-id shutter -s
+bindsym $mod+l exec --no-startup-id xset dpms force off
+#bindsym $mod+Shift+i exec simplescreenrecorder
+bindsym $mod+Shift+i exec ~/record.sh
