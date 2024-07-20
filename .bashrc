@@ -133,4 +133,10 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 complete -C /usr/bin/terraform terraform
-export PATH=/home/anna/.nimble/bin:/home/anna/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:/usr/bin:/usr/bin
+export PATH=/home/anna/.nimble/bin:/home/anna/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:/usr/bin:/usr/bin:/snap/bin:/usr/sbin:/home/$USER/.local/bin
+alias ff='firefox &'
+alias bb='librewolf &'
+/home/anna/welcome.sh
+export VDPAU_DRIVER=nvidia
+export EDITOR=/bin/vim.gtk3
+export HISTTIMEFORMAT="%F %T "
