@@ -24,7 +24,7 @@ else
             mkdir /home/$USER/.fonts
             sudo mv /home/$USER/Downloads/ttf/*.ttf /home/$USER/.fonts
             sudo fc-cache
-            echo "Installed font Iosevka, check ~/Downloads/ for archiving"
+            echo "Installed font Iosevka, check /home/$USER/Downloads/ for archiving"
         ;;
     esac
 fi

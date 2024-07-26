@@ -140,3 +140,6 @@ alias bb='librewolf &'
 export VDPAU_DRIVER=nvidia
 export EDITOR=/bin/vim.gtk3
 export HISTTIMEFORMAT="%F %T "
+
+# Created by `pipx` on 2024-07-24 14:03:28
+export PATH="$PATH:/home/anna/.local/bin"
