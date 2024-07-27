@@ -1,5 +1,15 @@
 #!/bin/bash
 
+WORKDIR=$(pwd)
+mkdir ~/Pictures
+
+for file in "$WORKDIR"/*; 
+do
+  if [ -f "$file" ]; then
+    sed -i "s/\$USER/$USER/g" "$file"
+  fi
+done
+
 # Install Iosevka font
 echo "--- Installing Iosevka font ---"
 if fc-list | grep -i "Iosevka" > /dev/null; then
