@@ -6,7 +6,9 @@ highlight CursorLineNr ctermfg=167
 set background=dark
 colorscheme jellybeans
 set clipboard=unnamed
-
+set noerrorbells
+set novisualbell
+set t_vb=
 set nocompatible
 filetype off
 

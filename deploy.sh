@@ -1,5 +1,6 @@
 #!/bin/bash
 #for other linux distro, simply change the 'apt-get'. Example 'dnf', 'yum' :>
+rm $HOME/.bashrc
 SCRIPT_DIR="$( cd "$( dirname "$BASH_SOUrcE[0]" )" && pwd )"
 symlinkFile() {
     filename="$SCRIPT_DIR/$1"
