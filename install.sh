@@ -7,7 +7,7 @@ mkdir ~/Pictures
 for file in "$WORKDIR"/*; 
 do
   if [ -f "$file" ]; then
-    sed -i "s/\anna/$ORIGINAL_USER/g" "$file"
+    sed -i "s/anna/$ORIGINAL_USER/g" "$file"
   fi
 done
 
