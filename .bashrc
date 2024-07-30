@@ -94,7 +94,7 @@ alias ld='ls -ld'
 alias l='ls -CF'
 alias clr='clear'
 alias clea='clear'
-alias gg='google-chrome &'
+alias gg='google-chrome-stable &'
 
 alias kubectl="minikube kubectl --"
 
@@ -143,3 +143,4 @@ export HISTTIMEFORMAT="%F %T "
 
 # Created by `pipx` on 2024-07-24 14:03:28
 export PATH="$PATH:/home/anna/.local/bin"
+PATH=/home/anna/.nimble/bin:/home/anna/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:/usr/bin:/usr/bin:/snap/bin:/usr/sbin:/home/anna/.local/bin:/home/anna/.local/bin:/usr/local/go/bin:/usr/local/go/bin:/usr/local/go/bin
