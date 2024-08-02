@@ -39,24 +39,37 @@ else
     esac
 fi
 
-echo "-- Installing Vim plugins"
-echo "--- Installing Vundle ---"
-if [ ! -d /home/$ORIGINAL_USER/.vim/bundle/Vundle.vim ]; then
-    git clone https://github.com/VundleVim/Vundle.vim.git /home/$ORIGINAL_USER/.vim/bundle/Vundle.vim
-else
-    echo "Vundle is already installed, SKIP"
-fi
-echo "--- Installing Jellybeans ---"
-if [ ! -d /home/$ORIGINAL_USER/.vim/pack/themes/start/jellybeans ]; then
-    git clone https://github.com/nanotech/jellybeans.vim.git /home/$ORIGINAL_USER/.vim/pack/themes/start/jellybeans
-else
-    echo "Jellybeans is already installed, SKIP"
-fi
+#echo "-- Installing Vim plugins"
+#echo "--- Installing Vundle ---"
+#if [ ! -d /home/$ORIGINAL_USER/.vim/bundle/Vundle.vim ]; then
+#    git clone https://github.com/VundleVim/Vundle.vim.git /home/$ORIGINAL_USER/.vim/bundle/Vundle.vim
+#else
+#    echo "Vundle is already installed, SKIP"
+#fi
+#echo "--- Installing Jellybeans ---"
+#if [ ! -d /home/$ORIGINAL_USER/.vim/pack/themes/start/jellybeans ]; then
+#    git clone https://github.com/nanotech/jellybeans.vim.git /home/$ORIGINAL_USER/.vim/pack/themes/start/jellybeans
+#else
+#    echo "Jellybeans is already installed, SKIP"
+#fi
 
-echo "--- Running :PluginInstall ---"
-vim +PluginInstall +qall
-echo "--- Done install Vim Plugin ---"
+#echo "--- Running :PluginInstall ---"
+#vim +PluginInstall +qall
+#echo "--- Done install Vim Plugin ---"
 
+
+read -p "Do you want to install oh-my-zsh [Y/n] " -n 1 -r
+if [[ ! $REPLY =~ ^[Nn]$ ]]
+then
+	echo "--- install oh-my-zsh ---"
+	sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+	git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+	echo 'ZSH_THEME="powerlevel10k/powerlevel10k"' >>~/.zshrc
+	git clone https://github.com/wbthomason/packer.nvim "$env:LOCALAPPDATA\nvim-data\site\pack\packer\start\packer.nvim"
+	nvim --headless +PackerSync +qa
+else 
+	echo "skip oh my zsh"
+fi
 
 installPackages() {
     while IFS= read -r package

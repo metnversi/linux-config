@@ -144,3 +144,5 @@ export HISTTIMEFORMAT="%F %T "
 # Created by `pipx` on 2024-07-24 14:03:28
 export PATH="$PATH:/home/anna/.local/bin"
 PATH=/home/anna/.nimble/bin:/home/anna/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:/usr/bin:/usr/bin:/snap/bin:/usr/sbin:/home/anna/.local/bin:/home/anna/.local/bin:/usr/local/go/bin:/usr/local/go/bin:/usr/local/go/bin
+PATH="$PATH:/opt/nvim-linux64/bin"
+. "$HOME/.cargo/env"

@@ -8,4 +8,6 @@
 bg-e7.png|symlink|Pictures/bg-e7.png
 lock.sh|symlink|lock.sh
 config|symlink|.config/i3/config
+nvim|symlink|.config/nvim
 .i3status.conf|symlink|.i3status.conf
+.zshrc|symlink|.zshrc
