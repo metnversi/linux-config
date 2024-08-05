@@ -63,6 +63,12 @@ if [[ ! $REPLY =~ ^[Nn]$ ]]
 then
 	echo "--- install oh-my-zsh ---"
 	sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+	
+	#install nvim
+	curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux64.tar.gz
+	sudo rm -rf /opt/nvim
+	sudo tar -C /opt -xzf nvim-linux64.tar.gz
+	
 	git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
 	echo 'ZSH_THEME="powerlevel10k/powerlevel10k"' >>~/.zshrc
 	git clone https://github.com/wbthomason/packer.nvim "$env:LOCALAPPDATA\nvim-data\site\pack\packer\start\packer.nvim"
@@ -124,6 +130,6 @@ else
     echo "--- Skipping AWS ---"
     echo "--- HELLO WORLD! ---"
 fi
-echo "--System is going to reboot after 5s!--"
+echo "--System is going to reboot after 10s!--"
 sleep 10
 sudo reboot

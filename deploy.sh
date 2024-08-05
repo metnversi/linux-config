@@ -9,18 +9,12 @@ symlinkFile() {
     mkdir -p $(dirname "$destination")
     
     if [ -e "$destination" ]; then
-        if [ ! -L "$destination" ]; then
-            # rm -rf "$destination"
-            echo "[ERROR] $destination exists but it's not a symlink. Please fix that manually. Removed" && exit 1
-            
-        else
-            ln -sf "$filename" "$destination"
-            echo "[OK] $filename -> $destination (symlink overridden)"
-        fi
-    else
-        ln -s "$filename" "$destination"
-        echo "[OK] $filename -> $destination"
+        rm -rf "$destination"
+        echo "[INFO] $destination exists and will be overwritten."
     fi
+    
+    ln -s "$filename" "$destination"
+    echo "[OK] $filename -> $destination"
 }
 
 deployManifest() {
@@ -30,14 +24,7 @@ deployManifest() {
         destination=$(echo $row | cut -d \| -f 3)
 
         case $operation in
-            symlink)
-                symlinkFile $filename $destination
-                ;;
-
-            override)
-                if [ -L "$HOME/$destination" ]; then
-                    rm "$HOME/$destination"
-                fi
+            symlink|override)
                 symlinkFile $filename $destination
                 ;;
 
@@ -48,17 +35,9 @@ deployManifest() {
     done
 }
 
-# echo "--- Common configs ---"
-# deployManifest MANIFEST
+
 echo "--- Linux configs ---"
 deployManifest MANIFEST.linux
 
-read -p "Do you want to install essential package [Y/n] " -n 1 -r
-echo    # move to a new line
-if [[ ! $REPLY =~ ^[Nn]$ ]]
-then
-    sudo "$(dirname $0)/install.sh"
-else
-    echo "--- HELLO WORLD! ---"
-fi
+sudo "$(dirname $0)/install.sh"
 

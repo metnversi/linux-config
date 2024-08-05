@@ -5,9 +5,12 @@
 .tmux.conf|symlink|.tmux.conf
 .vimrc|symlink|.vimrc
 .bashrc|symlink|.bashrc
-bg-e7.png|symlink|Pictures/bg-e7.png
-lock.sh|symlink|lock.sh
+
 config|symlink|.config/i3/config
 nvim|symlink|.config/nvim
 .i3status.conf|symlink|.i3status.conf
 .zshrc|symlink|.zshrc
+.wezterm.lua|symlink|.wezterm.lua
+dunstrc|symlink|.config/dunst/dunstrc
+.p10k.zsh|symlink|.p10k.zsh
+oh-my-zsh.sh|symlink|.oh-my-zsh/oh-my-zsh.sh
