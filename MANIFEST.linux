@@ -14,3 +14,4 @@ nvim|symlink|.config/nvim
 dunstrc|symlink|.config/dunst/dunstrc
 .p10k.zsh|symlink|.p10k.zsh
 oh-my-zsh.sh|symlink|.oh-my-zsh/oh-my-zsh.sh
+starship.toml|symlink|.config/starship.toml

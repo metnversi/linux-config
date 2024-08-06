@@ -35,6 +35,7 @@ deployManifest() {
     done
 }
 
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 echo "--- Linux configs ---"
 deployManifest MANIFEST.linux

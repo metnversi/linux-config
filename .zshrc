@@ -45,7 +45,7 @@ if [[ -n $SSH_CONNECTION ]]; then
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 alias ll='ls -lrta'
-alias gg='google-chrome-stable &'
+alias cc='google-chrome-stable &'
 alias vim='nvim'
 alias ff='firefox &'
 alias bb='librewolf &'
@@ -54,8 +54,9 @@ PATH=/home/anna/.nimble/bin:/home/anna/bin:/usr/local/bin:/usr/bin:/bin:/usr/loc
 PATH="$PATH:/opt/nvim-linux64/bin"
 . "$HOME/.cargo/env"
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
+typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
 source $ZSH/oh-my-zsh.sh
 
 # Move welcome.sh after oh-my-zsh.sh to avoid initialization issues
 /home/anna/welcome.sh
+#eval "$(starship init zsh)"

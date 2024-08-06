@@ -1,14 +1,25 @@
-- This repository saves my configurations for the Debian-based distro, including Vim, Emacs, Bash, i3, and Tmux.
+- This repository saves my configurations for the Debian-based distro, including Vim/Nvim, Emacs, Bash, i3, and Tmux.
 - This repos has so many public code from many type of license, so I just let it be open source :)
 - I wonder if it can work in MacOS, but I haven't tried it yet since I'm poor :)
 
 ## Preperation
 Read those documents below and install yourself.
-- [powerlevel10k](https://github.com/romkatv/powerlevel10k.git)
-- [oh-my-zsh](https://github.com/ohmyzsh/ohmyzsh.git)
-- [wezterm](https://wezfurlong.org/wezterm/installation.html)
+- [Powerlevel10k](https://github.com/romkatv/powerlevel10k.git)
+- [Oh-my-zsh](https://github.com/ohmyzsh/ohmyzsh.git)
+- [Wezterm](https://wezfurlong.org/wezterm/installation.html)
+- [Starship](https://github.com/starship/starship.git)
+- [Nerd font for starship](https://www.nerdfonts.com/font-downloads)
+- [Tmux plugin manager](https://github.com/tmux-plugins/tpm.git)
+- [Mason-lspconfig](https://github.com/williamboman/mason-lspconfig.nvim.git)
+- [Neotree](https://github.com/nvim-neo-tree/neo-tree.nvim.git)
+- [Lualine](https://github.com/nvim-lualine/lualine.nvim.git)
+- [Lazy.nvim](https://lazy.folke.io/)
+- [Activate.nvim](https://github.com/roobert/activate.nvim)
+- [Nvim completion](https://github.com/hrsh7th/nvim-cmp)
+- [Nvim telescope](https://github.com/nvim-telescope/telescope.nvim)
 
 ## Deployment
+Config for myself. You can install as reference.
 ```Bash
 git clone https://github.com/metnversi/linux-config.git
 cd linux-config

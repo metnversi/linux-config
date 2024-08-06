@@ -1,48 +1,22 @@
-# ~/.bashrc: executed by bash(1) for non-login shells.
-# see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
-# for examples
-
-# If not running interactively, don't do anything
 case $- in
     *i*) ;;
       *) return;;
 esac
 
-# don't put duplicate lines or lines starting with space in the history.
-# See bash(1) for more options
 HISTCONTROL=ignoreboth
-
-# append to the history file, don't overwrite it
 shopt -s histappend
-
-# for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
 HISTSIZE=1000
 HISTFILESIZE=2000
-
-# check the window size after each command and, if necessary,
-# update the values of LINES and COLUMNS.
+HISTTIMEFORMAT="%F %T "
 shopt -s checkwinsize
 
-# If set, the pattern "**" used in a pathname expansion context will
-# match all files and zero or more directories and subdirectories.
-#shopt -s globstar
-
-# make less more friendly for non-text input files, see lesspipe(1)
-#[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
-
-# set variable identifying the chroot you work in (used in the prompt below)
 if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
     debian_chroot=$(cat /etc/debian_chroot)
 fi
-
-# set a fancy prompt (non-color, unless we know we "want" color)
 case "$TERM" in
     xterm-color|*-256color) color_prompt=yes;;
 esac
 
-# uncomment for a colored prompt, if the terminal has the capability; turned
-# off by default to not distract the user: the focus in a terminal window
-# should be on the output of commands, not on the prompt
 #force_color_prompt=yes
 
 if [ -n "$force_color_prompt" ]; then
@@ -62,8 +36,6 @@ else
     PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
 fi
 unset color_prompt force_color_prompt
-
-# If this is an xterm set the title to user@host:dir
 case "$TERM" in
 xterm*|rxvt*)
     PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
@@ -72,7 +44,6 @@ xterm*|rxvt*)
     ;;
 esac
 
-# enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
     alias ls='ls --color=auto'
@@ -84,10 +55,8 @@ if [ -x /usr/bin/dircolors ]; then
     #alias egrep='egrep --color=auto'
 fi
 
-# colored GCC warnings and errors
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
-# some more ls aliases
 alias ll='ls -lrta'
 alias la='ls -a'
 alias ld='ls -ld'
@@ -95,28 +64,18 @@ alias l='ls -CF'
 alias clr='clear'
 alias clea='clear'
 alias gg='google-chrome-stable &'
-
-alias kubectl="minikube kubectl --"
+alias vim='nvim'
+alias ff='firefox &'
+alias bb='librewolf &'
 
 export GTK_IM_MODULE=ibus
 export XMODIFIERS=@im=ibus
 export QT_IM_MODULE=ibus
 
-# raylib path for programming
-# should be changing approariately
-# export PATH=$PATH:$HOME/repos/raylib/build/raylib
-# Alias definitions.
-# You may want to put all your additions into a separate file like
-# ~/.bash_aliases, instead of adding them here directly.
-# See /usr/share/doc/bash-doc/examples in the bash-doc package.
-
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
 
-# enable programmable completion features (you don't need to enable
-# this, if it's already enabled in /etc/bash.bashrc and /etc/profile
-# sources /etc/bash.bashrc).
 if ! shopt -oq posix; then
   if [ -f /usr/share/bash-completion/bash_completion ]; then
     . /usr/share/bash-completion/bash_completion
@@ -125,7 +84,6 @@ if ! shopt -oq posix; then
   fi
 fi
 export LS_COLORS="di=34:fi=37"
-export PATH=$PATH:/usr/bin
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib
 
 export NVM_DIR="$HOME/.nvm"
@@ -133,16 +91,12 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 complete -C /usr/bin/terraform terraform
-export PATH=/home/anna/.nimble/bin:/home/anna/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:/usr/bin:/usr/bin:/snap/bin:/usr/sbin:/home/$USER/.local/bin
-alias ff='firefox &'
-alias bb='librewolf &'
-/home/anna/welcome.sh
-export VDPAU_DRIVER=nvidia
-export EDITOR=/bin/vim.gtk3
-export HISTTIMEFORMAT="%F %T "
 
-# Created by `pipx` on 2024-07-24 14:03:28
-export PATH="$PATH:/home/anna/.local/bin"
-PATH=/home/anna/.nimble/bin:/home/anna/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:/usr/bin:/usr/bin:/snap/bin:/usr/sbin:/home/anna/.local/bin:/home/anna/.local/bin:/usr/local/go/bin:/usr/local/go/bin:/usr/local/go/bin
+/home/anna/welcome.sh
+VDPAU_DRIVER=nvidia
+EDITOR=/bin/vim.gtk3
+
+PATH=/home/anna/.nimble/bin:/home/anna/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:/usr/bin:/usr/bin:/snap/bin:/usr/sbin:/home/anna/.local/bin:/usr/local/go/bin
 PATH="$PATH:/opt/nvim-linux64/bin"
 . "$HOME/.cargo/env"
+eval "$(starship init bash)"
