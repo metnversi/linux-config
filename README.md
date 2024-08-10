@@ -3,7 +3,10 @@
 - I wonder if it can work in MacOS, but I haven't tried it yet since I'm poor :)
 
 ## Preperation
+
+To load icon, u need to install a nerd fonts, refer [there](https://www.nerdfonts.com/font-downloads). My config auto download Iosevka nerd fonts.
 Read those documents below and install yourself.
+
 - [Powerlevel10k](https://github.com/romkatv/powerlevel10k.git)
 - [Oh-my-zsh](https://github.com/ohmyzsh/ohmyzsh.git)
 - [Wezterm](https://wezfurlong.org/wezterm/installation.html)
@@ -17,12 +20,14 @@ Read those documents below and install yourself.
 - [Activate.nvim](https://github.com/roobert/activate.nvim)
 - [Nvim completion](https://github.com/hrsh7th/nvim-cmp)
 - [Nvim telescope](https://github.com/nvim-telescope/telescope.nvim)
+- [Copilot](https://github.com/github/copilot.vim.git)
 
 ## Deployment
+
 Config for myself. You can install as reference.
+
 ```Bash
 git clone https://github.com/metnversi/linux-config.git
 cd linux-config
 ./deploy.sh
 ```
-
