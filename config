@@ -188,6 +188,7 @@ bindsym $mod+l exec --no-startup-id xset dpms force off
 
 bindsym $mod+Shift+i exec ~/record.sh
 
-set $term zsh
+#bindsym $mod+Return exec i3-sensible-terminal
 bindsym $mod+Return exec i3-sensible-terminal -e zsh
+#bindsym $mod+Return exec wezterm
 # remove -e zsh to back bash shell.
