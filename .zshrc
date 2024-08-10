@@ -60,3 +60,6 @@ source $ZSH/oh-my-zsh.sh
 # Move welcome.sh after oh-my-zsh.sh to avoid initialization issues
 /home/anna/welcome.sh
 #eval "$(starship init zsh)"
+
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /usr/bin/terraform terraform
