@@ -1,5 +1,5 @@
 ;; Initialize the package system if it's not already done
-(unless 
+`(unless 
 (bound-and-true-p package--initialized)   
   (package-initialize))
 
@@ -7,12 +7,11 @@
 (load "~/.emacs.rc/rc.el")
 (load "~/.emacs.rc/misc-rc.el")
 (load "~/.emacs.rc/org-mode-rc.el")
-
 ;; word font, required pre-installed in your system.
 ;; here is Iosevka font, size 10
 (defun rc/get-default-font ()
   (cond 
-    ((eq system-type 'gnu/linux) "Iosevka-13")))
+    ((eq system-type 'gnu/linux) "Iosevka Nerd Font-13")))
 
 (add-to-list 'default-frame-alist `(font . ,(rc/get-default-font)))
 ;;remove welcome screen and menu bar
@@ -49,7 +48,8 @@
 (ido-mode 1)
 (ido-everywhere 1)
 (ido-ubiquitous-mode 1)
-
+(require 'neotree)
+(global-set-key  [f8]  'neotree-toggle)
 ;;line number green
 (setq-default display-line-numbers 'visual)
 (setq-default display-line-numbers-widen t)
@@ -127,6 +127,7 @@
  'rfc-mode
  'sml-mode
  )
+(setq neo-theme (if (display-graphic-p) 'icons 'arrow))
 
 (load "~/.emacs.shadow/shadow-rc.el" t)
 
