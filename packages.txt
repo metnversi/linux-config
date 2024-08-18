@@ -1,4 +1,5 @@
 emacs
+zsh
 tmux
 i3
 i3status
