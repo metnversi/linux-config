@@ -19,7 +19,6 @@ floating_modifier $mod
 tiling_drag modifier titlebar
 bindsym $mod+Shift+q kill
 
-workspace_layout tabbed
 
 # bindcode $mod+40 exec "rofi -modi drun,run -show drun"
 # There also is i3-dmenu-desktop which only displays applications shipping a
@@ -99,7 +98,7 @@ bindsym $mod+Shift+9 move container to workspace number $ws9
 bindsym $mod+Shift+0 move container to workspace number $ws10
 
 
-#set $second_monitor DP_4
+#set $second_monitor HDMI-0
 #workspace 2 output $second_monitor
 
 #remember to run this:
@@ -109,7 +108,7 @@ bindsym $mod+Shift+0 move container to workspace number $ws10
 bindsym $mod+z exec emacs -fs
 bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Log out?' -B 'Yes' 'i3-msg exit'"
 
 mode "resize" {
         # These bindings trigger as soon as you enter the resize mode
@@ -141,13 +140,12 @@ mode "resize" {
 #exec --no-startup-id source ~/.fehbg
 
 bindsym $mod+r mode "resize"
-bindsym $mod+shift+x exec betterlockscreen -l dim
 
 #for_window [class="^gnome-terminal$"] fullscreen
 #for_window [class="^gnome-terminal$"] border none
 
 # class                 border  bground text    indicator child_border
-client.focused          #900000 #900A32 #FFFFFF #2E9EF4   #900000
+client.focused          #900000 #900A32 #FFFFFF #2E9EF4   #000000
 client.focused_inactive #333333 #5F676A #FFFFFF #484E50   #5F676A
 client.unfocused        #333333 #222222 #888888 #292D2E   #222222
 client.urgent           #2F343A #900000 #FFFFFF #900000   #900000
@@ -157,14 +155,15 @@ client.background       #FFFFFF
 
 bar {
   position top
-  tray_output none
+  #tray_output primary
+  #workspace_buttons no
   #status_command i3status
   status_command ~/repos/bumblebee-status/bumblebee-status \
                   -t night-powerline \
                   -m pomodoro memory battery pasink pasource date time \
-                  #network \
                   -p time.format="%H:%M" \
-                  date.format="%a %b %d %Y" \
+                  date.format="%a %b %d" \
+                  memory.left-click="btop" \
                   #network.device="wlp4s0"
                   
   colors {
@@ -180,7 +179,7 @@ bar {
     }
 }
 
-bindsym $mod+d exec "dmenu_run -nf '#BBBBBB' -nb '#222222' -sb '#128D09' -sf '#EEEEEE' -fn 'Iosevka-13' -p 'dmenu prompt &gt;'"
+bindsym $mod+d exec "dmenu_run -nf '#BBBBBB' -nb '#222222' -sb '#128D09' -sf '#EEEEEE' -fn 'Iosevka Nerd Font-10' -p 'dmenu prompt &gt;'"
 
 bindsym Mod1+space exec --no-startup-id ibus engine xkb:us::eng
 exec --no-startup-id redshift -O 3500
@@ -201,10 +200,14 @@ exec --no-startup-id feh --bg-scale ~/Pictures/b1.jpg
 #bindsym $mod+Return exec i3-sensible-terminal
 bindsym $mod+Return exec i3-sensible-terminal -e zsh
 #bindsym $mod+Return exec wezterm
-# remove -e zsh to back bash shell.
+# remove -e zsh to use default shell.
 
-for_window [class="^.*"] border pixel 0
-default_border pixel 0
-default_floating_border pixel 0
+#for_window [class="^.*"] border none
+#default_border pixel 0
+#default_floating_border pixel 0
+#assign [class=".*"] $ws2
+#for_window [class="URxvt|wezerm|Gnome-terminal"] move to workspace 1
 #for_window [class=".*"] title_format " "
 #xrandr --output HDMI-0 --auto --left-of DP-4
+workspace_layout tabbed
+#hide_edge_borders both
