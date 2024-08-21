@@ -4,9 +4,7 @@
 ;;              '("melpa-stable" . "https://stable.melpa.org/packages/") t)
 (when (display-graphic-p)
   (require 'all-the-icons))
-;; or
-(use-package all-the-icons
-  :if (display-graphic-p))
+
 ;;(defvar rc/package-contents-refreshed nil)
 
 ;;(defun rc/package-refresh-contents-once ()
