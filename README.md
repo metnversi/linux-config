@@ -22,6 +22,13 @@ Read those documents below and install yourself.
 - [Nvim telescope](https://github.com/nvim-telescope/telescope.nvim)
 - [Copilot](https://github.com/github/copilot.vim.git)
 
+for i3wm:
+
+- [polybar](https://github.com/polybar/polybar)
+- [bumblebee-status](https://github.com/tobi-wan-kenobi/bumblebee-status.git)
+
+Remember, there are many dependencies to install... so be patient :)
+
 ## Deployment
 
 Config for myself. You can install as reference.
