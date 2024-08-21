@@ -1,6 +1,6 @@
 
 set $mod Mod4
-font pango:Iosevka 10
+font pango:Iosevka Nerd Font 10
 
 # Start XDG autostart .desktop files using dex. See also
 # https://wiki.archlinux.org/index.php/XDG_Autostart
@@ -147,7 +147,7 @@ bindsym $mod+shift+x exec betterlockscreen -l dim
 #for_window [class="^gnome-terminal$"] border none
 
 # class                 border  bground text    indicator child_border
-client.focused          #900000 #900A32 #FFFFFF #2E9EF4   #285577
+client.focused          #900000 #900A32 #FFFFFF #2E9EF4   #900000
 client.focused_inactive #333333 #5F676A #FFFFFF #484E50   #5F676A
 client.unfocused        #333333 #222222 #888888 #292D2E   #222222
 client.urgent           #2F343A #900000 #FFFFFF #900000   #900000
@@ -156,7 +156,17 @@ client.placeholder      #000000 #0C0C0C #FFFFFF #000000   #0C0C0C
 client.background       #FFFFFF
 
 bar {
- status_command i3status
+  position top
+  tray_output none
+  #status_command i3status
+  status_command ~/repos/bumblebee-status/bumblebee-status \
+                  -t night-powerline \
+                  -m pomodoro memory battery pasink pasource date time \
+                  #network \
+                  -p time.format="%H:%M" \
+                  date.format="%a %b %d %Y" \
+                  #network.device="wlp4s0"
+                  
   colors {
      background #000000
      statusline #FFFFFF
@@ -187,8 +197,14 @@ bindsym $mod+Shift+s exec --no-startup-id shutter -s
 bindsym $mod+l exec --no-startup-id xset dpms force off
 
 bindsym $mod+Shift+i exec ~/record.sh
-
+exec --no-startup-id feh --bg-scale ~/Pictures/b1.jpg
 #bindsym $mod+Return exec i3-sensible-terminal
 bindsym $mod+Return exec i3-sensible-terminal -e zsh
 #bindsym $mod+Return exec wezterm
 # remove -e zsh to back bash shell.
+
+for_window [class="^.*"] border pixel 0
+default_border pixel 0
+default_floating_border pixel 0
+#for_window [class=".*"] title_format " "
+#xrandr --output HDMI-0 --auto --left-of DP-4
