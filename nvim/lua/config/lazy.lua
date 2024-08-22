@@ -52,6 +52,15 @@ require("lazy").setup({
       },
       -- See Commands section for default commands if you want to lazy load on them
     },
+    {
+      "iamcco/markdown-preview.nvim",
+      cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+      build = "cd app && yarn install",
+      init = function()
+        vim.g.mkdp_filetypes = { "markdown" }
+      end,
+      ft = { "markdown" },
+    },
   },
   defaults = {
     -- By default, only LazyVim plugins will be lazy-loaded. Your custom plugins will load during startup.
@@ -81,5 +90,3 @@ require("lazy").setup({
     },
   },
 })
-
-
