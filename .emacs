@@ -12,7 +12,7 @@
 (defun rc/get-default-font ()
   (cond 
     ((eq system-type 'gnu/linux) "Iosevka Nerd Font-13")))
-
+ 
 (add-to-list 'default-frame-alist `(font . ,(rc/get-default-font)))
 ;;remove welcome screen and menu bar
 (setq inhibit-startup-screen t)
