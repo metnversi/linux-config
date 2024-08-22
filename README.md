@@ -1,6 +1,5 @@
 - This repository saves my configurations for the Debian-based distro, including Vim/Nvim, Emacs, Bash, i3, and Tmux.
 - This repos has so many public code from many type of license, so I just let it be open source :)
-- I wonder if it can work in MacOS, but I haven't tried it yet since I'm poor :)
 
 ## Preperation
 
@@ -31,10 +30,15 @@ Remember, there are many dependencies to install... so be patient :)
 
 ## Deployment
 
-Config for myself. You can install as reference.
-
 ```Bash
 git clone https://github.com/metnversi/linux-config.git
 cd linux-config
 ./deploy.sh
 ```
+
+## Some pictures
+
+<img src="resource/shell.png" alt="My Image" />
+<img src="resource/vim.png" alt="My Image2" />
+
+Worked on my machine :D
