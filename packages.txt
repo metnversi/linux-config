@@ -16,6 +16,7 @@ libgtk-3-dev
 vlc
 acpi
 pulseaudio-utils
+fortune cowsay
 
 # optional
 !obs-studio
