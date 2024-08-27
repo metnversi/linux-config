@@ -49,6 +49,7 @@ alias cc='google-chrome-stable &'
 alias vim='nvim'
 alias ff='firefox &'
 alias bb='librewolf &'
+alias cf='fortune | cowsay'
 
 PATH=/home/anna/.nimble/bin:/home/anna/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:/usr/bin:/usr/bin:/snap/bin:/usr/sbin:/home/anna/.local/bin:/usr/local/go/bin
 PATH="$PATH:/opt/nvim-linux64/bin"
@@ -59,7 +60,8 @@ source $ZSH/oh-my-zsh.sh
 
 # Move welcome.sh after oh-my-zsh.sh to avoid initialization issues
 /home/anna/welcome.sh
-#eval "$(starship init zsh)"
+fortune | cowsay
 
 autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /usr/bin/terraform terraform
+#eval "$(starship init zsh)"
