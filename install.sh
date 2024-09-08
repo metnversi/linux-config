@@ -2,7 +2,6 @@
 
 ORIGINAL_USER=$(logname)
 WORKDIR=$(pwd)
-mkdir ~/Pictures
 
 for file in "$WORKDIR"/*; do
   if [ -f "$file" ]; then
