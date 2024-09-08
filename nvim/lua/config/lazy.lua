@@ -13,7 +13,7 @@ require("lazy").setup({
       import = "lazyvim.plugins",
     }, -- import any extras modules here
     -- import/override with your plugins
-    { import = "lazyvim.plugins.extras.coding.copilot" },
+    -- { import = "lazyvim.plugins.extras.coding.copilot" },
     { import = "lazyvim.plugins.extras.coding.mini-surround" },
     { import = "lazyvim.plugins.extras.editor.aerial" },
     { import = "lazyvim.plugins.extras.editor.dial" },

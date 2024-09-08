@@ -21,8 +21,7 @@ zstyle ':omz:update' mode auto      # update automatically without asking
 # COMPLETION_WAITING_DOTS="true"
 
 # "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
-# ZSH_CUSTOM=/path/to/new-custom-folder
-HIST_STAMPS="mm/dd/yyyy"
+HIST_STAMPS="dd.mm.yyyy"
 
 # Standard plugins can be found in $ZSH/plugins/
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/

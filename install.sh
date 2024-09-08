@@ -68,8 +68,7 @@ if [[ ! $REPLY =~ ^[Nn]$ ]]; then
 
   git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
   echo 'ZSH_THEME="powerlevel10k/powerlevel10k"' >>~/.zshrc
-  git clone https://github.com/wbthomason/packer.nvim "$env:LOCALAPPDATA\nvim-data\site\pack\packer\start\packer.nvim"
-  nvim --headless +PackerSync +qa
+  p10k configure
 else
   echo "skip oh my zsh"
 fi
