@@ -42,13 +42,14 @@ if [[ -n $SSH_CONNECTION ]]; then
 
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-
+export RUST_BACKTRACE=full
 alias ll='ls -lrta'
 alias cc='google-chrome-stable &'
 alias vim='nvim'
 alias ff='firefox &'
 alias bb='librewolf &'
 alias cf='fortune | cowsay'
+alias ddr='wezterm imgcat '
 
 PATH=/home/anna/.nimble/bin:/home/anna/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:/usr/bin:/usr/bin:/snap/bin:/usr/sbin:/home/anna/.local/bin:/usr/local/go/bin
 PATH="$PATH:/opt/nvim-linux64/bin"
@@ -64,3 +65,6 @@ fortune | cowsay
 autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /usr/bin/terraform terraform
 #eval "$(starship init zsh)"
+
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+source <(kubectl completion zsh)
