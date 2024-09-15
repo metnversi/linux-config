@@ -6,12 +6,12 @@
 To load icon, u need to install a nerd fonts, refer [there](https://www.nerdfonts.com/font-downloads). My config auto download Iosevka nerd fonts.
 Read those documents below and install yourself.
 
-- [Powerlevel10k](https://github.com/romkatv/powerlevel10k.git)
-- [Oh-my-zsh](https://github.com/ohmyzsh/ohmyzsh.git)
-- [Wezterm](https://wezfurlong.org/wezterm/installation.html)
-- [Starship](https://github.com/starship/starship.git)
-- [Nerd font for starship](https://www.nerdfonts.com/font-downloads)
-- [Tmux plugin manager](https://github.com/tmux-plugins/tpm.git)
+- [Powerlevel10k](https://github.com/romkatv/powerlevel10k.git): my theme for zsh
+- [Oh-my-zsh](https://github.com/ohmyzsh/ohmyzsh.git): manage themes in zsh
+- [Wezterm](https://wezfurlong.org/wezterm/installation.html): imgcat + better custom appearance terminal
+- [Starship](https://github.com/starship/starship.git): theme for bash/zsh. 
+- [Nerd font](https://www.nerdfonts.com/font-downloads): also require for every theme icon
+- [Tmux plugin manager](https://github.com/tmux-plugins/tpm.git): tmux manager, as the name :)
 - [Mason-lspconfig](https://github.com/williamboman/mason-lspconfig.nvim.git)
 - [Neotree](https://github.com/nvim-neo-tree/neo-tree.nvim.git)
 - [Lualine](https://github.com/nvim-lualine/lualine.nvim.git)
@@ -20,6 +20,7 @@ Read those documents below and install yourself.
 - [Nvim completion](https://github.com/hrsh7th/nvim-cmp)
 - [Nvim telescope](https://github.com/nvim-telescope/telescope.nvim)
 - [Copilot](https://github.com/github/copilot.vim.git)
+- [Copilot Chat](https://github.com/CopilotC-Nvim/CopilotChat.nvim): require paid license
 
 for i3wm:
 
