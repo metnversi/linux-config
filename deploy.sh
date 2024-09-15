@@ -42,5 +42,4 @@ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 echo "--- Linux configs ---"
 deployManifest MANIFEST.linux
-
 "$(dirname $0)/install.sh"

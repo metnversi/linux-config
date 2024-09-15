@@ -68,5 +68,5 @@ complete -o nospace -C /usr/bin/terraform terraform
 
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 source <(kubectl completion zsh)
-ssh() { /usr/bin/ssh "$@" | /home/$USER/repos/netcli-highlight/myenv/bin/ct; }
+ssh() { /usr/bin/ssh "$@" | ct; }
 ZSH_THEME="powerlevel10k/powerlevel10k"
