@@ -2,6 +2,7 @@
 #event {SESSION DISCONNECTED} {#end}
 
 #highlight {%d.%d.%d.%d} {bold yellow}
+#highlight {%d:%d:%d.%d} {bold azure}
 #highlight {{(?:[\W\s]|^)((HundredGigabitEthernet\d/\d{1,2}\.\d{1,10}|HundredGigabitEthernet\d/\d{1,2}|Hu\d/\d{1,2}\.\d{1,10}|Hu\d/\d{1,2}|H\d/\d{1,2}\.\d{1,10}|H\d/\d{1,2}))(?=[\W\s]|$)}} {bold light azure}
 #highlight {{(?:[\W\s]|^)((FortyGigabitEthernet\d/\d{1,2}\.\d{1,10}|FortyGigabitEthernet\d/\d{1,2}|Fo\d/\d{1,2}\.\d{1,10}|Fo\d/\d{1,2}))(?=[\W\s]|$)}} {bold light azure}
 #highlight {{(?:[\W\s]|^)((TenGigabitEthernet\d/\d{1,2}\.\d{1,10}|TenGigabitEthernet\d/\d{1,2}|Te\d/\d{1,2}\.\d{1,10}|Te\d/\d{1,2}|T\d/\d{1,2}\.\d{1,10}|T\d/\d{1,2}))(?=[\W\s]|$)}} {bold light azure}
@@ -10,14 +11,21 @@
 #highlight {{(?:[\W\s]|^)((Ethernet\d/\d{1,2}\.\d{1,10}|Ethernet\d/\d{1,2}|Et\d/\d{1,2}\.\d{1,10}|Et\d/\d{1,2}|E\d/\d{1,2}.\d{1,10}|E\d/\d{1,2}))(?=[\W\s]|$)}} {bold light azure}
 #highlight {Serial} {bold blue}
 
-#highlight {Vlan} {bold magenta}
-#highlight {PAgP} {bold magenta}
-#highlight {{(?:[\W\s]|^)((R\d{1,2}%\w*|R\d{1,2}|up|UPDOWN|CHANGED|ADJCHG|NBRCHANGE|CONFIG_I|RESTART|su|ia|OSPF|COLDSTART|definition|forwarding|SW\d{1,2}|BB\d|BB|PE\d{1,2}|CE\d{1,2}|P\d{1,2}|FRS|Sw\d{1,2}))(?=[\W\s]|$)}} {bold green}
-#highlight {{(?:[\W\s]|^)((DROTHER|POINT_TO_POINT|POINT_TO_MULTIPOINT|BROADCAST|NON_BROADCAST|LOOPBACK|SHAM_LINK|3101|1587|transit|Transit|nssa|NSSA|stub|Stub|Superbackbone))(?=[\W\s]|$)}} {bold light orange}
-#highlight {{(?:[\W\s]|^)((OSPF_VL\d{1,2}|OSPF_SL\d{1,2}|VL\d{1,2}|SL\d{1,2}|Type\-\d|ospf|O|IA|E[12]|L[12]|N[12]|P2P|P2MP|BDR|DR|ABR|ASBR|LOOP))(?=[\W\s]|$)}} {bold light orange}
-#highlight {{(?:[\W\s]|^)((DROTHER|POINT_TO_POINT|POINT_TO_MULTIPOINT|FULL|LINEPROTO|LINK|BROADCAST|NON_BROADCAST|LOOPBACK|SHAM_LINK|3101|1587|transit|Transit|nssa|NSSA|stub|Stub|Superbackbone))(?=[\W\s]|$)}} {bold light violet}
+#highlight {{(?:[\W\s]|^)((vlan|Vlan|VLAN))(?=[\W\s]|$)}} {bold magenta}
+#highlight {{(?:[\W\s]|^)((pagp|lacp|PAgP|LACP))(?=[\W\s]|$)}} {bold pink}
 
-#highlight {{(?:[\W\s]|^)((administratively|down|Down|DOWN|PLATFORM|DUAL|SYS|SNMP|CRYPTO|fail|failed|not|bad|never|BLK|OFF|fddi|n\-isl|isl|ISAKMP_ON_OFF|GDOI_ON_OFF|notconnect|blocking|\(tdp\)|tdp|TDP|denied|invalid|err\-disabled|disabled|unusable|DENIED))(?=[\W\s]|$)}} {bold red}
+#highlight {{(?:[\W\s]|^)((R\d{1,2}%\w*|R\d{1,2}|up|UPDOWN|CHANGED|ADJCHG|NBRCHANGE|CONFIG_I|RESTART))(?=[\W\s]|$)}} {bold green}
+#highlight {{(?:[\W\s]|^)((su|ia|OSPF|ADJCHANGE|COLDSTART|Up|definition|forwarding|SW\d{1,2}|BB\d|BB|PE\d{1,2}|CE\d{1,2}|P\d{1,2}|FRS|Sw\d{1,2}))(?=[\W\s]|$)}} {bold green}
+
+#highlight {{(?:[\W\s]|^)((DROTHER|POINT_TO_POINT|POINT_TO_MULTIPOINT|BROADCAST|NON_BROADCAST))(?=[\W\s]|$)}} {bold light violet}
+#highlight {{(?:[\W\s]|^)((LOOPBACK|SHAM_LINK|LINEPROTO|LINK|3101|1587|transit|Transit|nssa|NSSA|stub|Stub|Superbackbone))(?=[\W\s]|$)}} {bold light violet}
+
+#highlight {{(?:[\W\s]|^)((OSPF_VL\d{1,2}|OSPF_SL\d{1,2}|VL\d{1,2}|SL\d{1,2}|Type\-\d|ospf))(?=[\W\s]|$)}} {bold light orange}
+#highlight {{(?:[\W\s]|^)((O|IA|E[12]|L[12]|N[12]|P2P|P2MP|BDR|BGP|DR|ABR|ASBR|LOOP))(?=[\W\s]|$)}} {bold light orange}
+
+#highlight {{(?:[\W\s]|^)((GDOI_ON_OFF|notconnect|blocking|\(tdp\)|tdp|TDP|denied|invalid|err\-disabled|disabled|unusable|DENIED))(?=[\W\s]|$)}} {bold red}
+#highlight {{(?:[\W\s]|^)((administratively|down|Down|DOWN|PLATFORM))(?=[\W\s]|$)}} {bold red}
+#highlight {{(?:[\W\s]|^)((DUAL|SYS|SNMP|CRYPTO|fail|failed|not|bad|never|BLK|OFF|fddi|n\-isl|isl|ISAKMP_ON_OFF|PACONFIG))(?=[\W\s]|$)}} {bold red}
 
 #highlight { any } {bold white}
 #highlight {{permit(ted)*}} {bold green}

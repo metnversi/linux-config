@@ -95,3 +95,6 @@ PATH=/home/anna/.nimble/bin:/home/anna/bin:/usr/local/bin:/usr/bin:/bin:/usr/loc
 PATH="$PATH:/opt/nvim-linux64/bin"
 . "$HOME/.cargo/env"
 eval "$(starship init bash)"
+
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+source <(kubectl completion bash)

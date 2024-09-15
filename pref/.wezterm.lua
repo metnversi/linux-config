@@ -1,6 +1,6 @@
 local wezterm = require("wezterm")
 local config = {}
--- config.colors = require("cyberdream")
+--config.colors = require("cyberdream")
 config.font = wezterm.font_with_fallback({
 	{
 		family = "Iosevka Nerd Font",
@@ -17,7 +17,7 @@ config.use_fancy_tab_bar = true
 config.window_decorations = "INTEGRATED_BUTTONS|RESIZE"
 -- config.native_macos_fullscreen_mode = true
 config.window_padding = {
-	top = "0.5cell",
+	top = "0.3cell",
 }
 config.mouse_bindings = {
 	-- Cmd-click will open the link under the mouse cursor

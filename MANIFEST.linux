@@ -17,3 +17,4 @@ oh-my-zsh.sh|symlink|.oh-my-zsh/oh-my-zsh.sh
 starship.toml|symlink|.config/starship.toml
 i3/polybarconfig.ini|symlink|.config/polybar/config.ini
 pref/.chromatermrc|symlink|.chromatermrc
+pref/.chromaterm.yml|symlink|.chromaterm.yml

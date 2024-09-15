@@ -68,3 +68,4 @@ complete -o nospace -C /usr/bin/terraform terraform
 
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 source <(kubectl completion zsh)
+ssh() { /usr/bin/ssh "$@" | /home/anna/repos/netcli-highlight/myenv/bin/ct; }
