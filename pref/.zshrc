@@ -51,7 +51,7 @@ alias bb='librewolf &'
 alias cf='fortune | cowsay'
 alias ddr='wezterm imgcat '
 
-PATH=/home/anna/.nimble/bin:/home/anna/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:/usr/bin:/usr/bin:/snap/bin:/usr/sbin:/home/anna/.local/bin:/usr/local/go/bin
+PATH=/home/$USER/.nimble/bin:/home/$USER/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:/usr/bin:/usr/bin:/snap/bin:/usr/sbin:/home/$USER/.local/bin:/usr/local/go/bin
 PATH="$PATH:/opt/nvim-linux64/bin"
 . "$HOME/.cargo/env"
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
@@ -59,7 +59,7 @@ typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
 source $ZSH/oh-my-zsh.sh
 
 # Move welcome.sh after oh-my-zsh.sh to avoid initialization issues
-/home/anna/welcome.sh
+/home/$USER/welcome.sh
 fortune | cowsay
 
 autoload -U +X bashcompinit && bashcompinit
@@ -68,4 +68,5 @@ complete -o nospace -C /usr/bin/terraform terraform
 
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 source <(kubectl completion zsh)
-ssh() { /usr/bin/ssh "$@" | /home/anna/repos/netcli-highlight/myenv/bin/ct; }
+ssh() { /usr/bin/ssh "$@" | /home/$USER/repos/netcli-highlight/myenv/bin/ct; }
+ZSH_THEME="powerlevel10k/powerlevel10k"

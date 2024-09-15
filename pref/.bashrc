@@ -87,11 +87,11 @@ export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib
 
 complete -C /usr/bin/terraform terraform
 
-/home/anna/welcome.sh
+/home/$USER/welcome.sh
 VDPAU_DRIVER=nvidia
-EDITOR=/bin/vim.gtk3
+EDITOR=/opt/nvim-linux64/bin/
 
-PATH=/home/anna/.nimble/bin:/home/anna/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:/usr/bin:/usr/bin:/snap/bin:/usr/sbin:/home/anna/.local/bin:/usr/local/go/bin
+PATH=/home/$USER/.nimble/bin:/opt/nvim-linux64/bin:/home/$USER/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:/usr/bin:/usr/bin:/snap/bin:/usr/sbin:/home/$USER/.local/bin:/usr/local/go/bin
 PATH="$PATH:/opt/nvim-linux64/bin"
 . "$HOME/.cargo/env"
 eval "$(starship init bash)"
