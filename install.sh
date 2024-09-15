@@ -5,7 +5,7 @@ WORKDIR=$(pwd)
 
 for file in "$WORKDIR"/*; do
   if [ -f "$file" ]; then
-    sed -i "s/anna/$ORIGINAL_USER/g" "$file"
+    sed -i "s/ubuntu/$ORIGINAL_USER/g" "$file"
   fi
 done
 
@@ -59,15 +59,14 @@ read -p "Do you want to install oh-my-zsh [Y/n] " -n 1 -r
 if [[ ! $REPLY =~ ^[Nn]$ ]]; then
   echo "--- install oh-my-zsh ---"
   sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+  git clone https://github.com/ohmyzsh/ohmyzsh.git ~/.oh-my-zsh
+  git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+  curl -sS https://starship.rs/install.sh | sh
 
   #install nvim
   curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux64.tar.gz
   sudo rm -rf /opt/nvim
   sudo tar -C /opt -xzf nvim-linux64.tar.gz
-
-  git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
-  echo 'ZSH_THEME="powerlevel10k/powerlevel10k"' >>~/.zshrc
-  p10k configure
 else
   echo "skip oh my zsh"
 fi
