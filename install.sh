@@ -105,6 +105,7 @@ installPackages() {
 }
 installPackages packages.txt
 pip3 install chromaterm
+python3 -m env ~/myenv
 read -p "Do you want to install AWC CLI? [Y/n] " -n 1 -r
 echo # move to a new line
 if [[ ! $REPLY =~ ^[Nn]$ ]]; then

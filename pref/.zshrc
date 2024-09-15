@@ -51,7 +51,7 @@ alias bb='librewolf &'
 alias cf='fortune | cowsay'
 alias ddr='wezterm imgcat '
 
-PATH=/home/$USER/.nimble/bin:/home/$USER/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:/usr/bin:/usr/bin:/snap/bin:/usr/sbin:/home/$USER/.local/bin:/usr/local/go/bin
+PATH=/home/$USER/.nimble/bin:/home/$USER/bin:/home/$USER/myenv/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:/usr/bin:/usr/bin:/snap/bin:/usr/sbin:/home/$USER/.local/bin:/usr/local/go/bin
 PATH="$PATH:/opt/nvim-linux64/bin"
 . "$HOME/.cargo/env"
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
