@@ -8,4 +8,4 @@ Read those documents below and install yourself.
 - [Nerd font](https://www.nerdfonts.com/font-downloads): also require for every theme icon
 - [Tmux plugin manager](https://github.com/tmux-plugins/tpm.git): tmux manager, as the name :)
 
-<img src="../../resource/shell.png" alt="My Image" />
+<img src="../resource/shell.png" alt="terminal picture" />
