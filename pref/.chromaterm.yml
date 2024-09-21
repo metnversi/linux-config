@@ -101,51 +101,61 @@ rules:
     color: f#990099 bold
 
   - description: Interfaces in shutdown (Red) no shutdown (Bright Green)
-    regex: ((\s\sshutdown)|\s\sno shutdown|CHANGED|update|\ up|^C\ |\ C\ |C\ \ |PACONFIG|Up|UP|router ID|connected|duplex|backup|DUAL|SETUP|FULL|Loopback\d{1,2}|localhost|local|\ AS\ |\d{2,4} bytes)
+    regex: (Enabled|\ L\ |^L\ |(\s\sshutdown)|\s\sno shutdown|upgrade|update|\ up|^C\ |\ C\ |C\ \ |PACONFIG|UP|router ID|connected|duplex|backup|DUAL|SETUP|FULL|Loopback\d{1,2}|localhost|local|\d{1,8} bytes)
+    color:
+      1: f#6CFF00 bold
+
+  - description: Interfaces in shutdown (Red) no shutdown (Bright Green)
+    regex: ((?<=%)([A-Za-z0-9_]+)(?=-\d-)|CALL_HOME_ENABLED|\ OK|http|LICENSING|SS_ENABLED|\ ON|ENABLED|VXE_THROUGHPUT|SMART_LIC|AGENT_READY|AGENT_ENABLED|EXPORT_CONTROLLED|IOSXEBOOT|IOSXE|PART_VERIFY|BOOT|AGENT_READY)
     color:
       1: f#6CFF00 bold
 
   - description: red state + 100Gigabit ethernet
-    regex: ((#|NULL|UNKNOWN|null|Down|Null\d{1,2}|VoIP|Error|UPDOWN|DOWN|errors|error|ERROR|downloaded|CRYPTO|SNMP|SYS|down|shutdown|summary|SUMMARY|administratively down|not|OFF|HundredGigabitEthernet\d/\d{1,2}\.\d{1,10}|HundredGigabitEthernet\d/\d{1,2}|Hu\d/\d{1,2}\.\d{1,10}|Hu\d/\d{1,2}|H\d/\d{1,2}\.\d{1,10}|H\d/\d{1,2}))
+    regex: ((LEVEL|\ esp\ |#|SEULA|EULA|NULL|UNKNOWN|null|Down|Null\d{1,2}|VoIP|Errors|Error|UPDOWN|DOWN|errors|error|ERROR|downloaded|SNMP|SYS|down|shutdown|summary|SUMMARY|administratively down|not\ |OFF|HundredGigabitEthernet\d/\d{1,2}\.\d{1,10}|HundredGigabitEthernet\d/\d{1,2}|Hu\d/\d{1,2}\.\d{1,10}|Hu\d/\d{1,2}|H\d/\d{1,2}\.\d{1,10}|H\d/\d{1,2}))
+    color:
+      1: f#900000 bold
+
+  - description: red state + 100Gigabit ethernet
+    regex: ((?<=-\d-)([A-Za-z0-9_]+)|hostname|no\ |STOPPED|stopped|PKI|PNP|AUTONOMOUS|EVENT|STATUS|DBG|EXTENDED|SYSID|DISABLED|CSDL|CRYPTO_ENGINE)
     color:
       1: f#900000 bold
 
   - description: red line
-    regex: (Status codes|Interface|LSA|IP-Address|OK|Method|Status|Protocol|Pri|\ S\ |static|\d{2,5} secs)
+    regex: (Status codes|LSA|Status|Protocol|Pri|address-family|\ S\ |static|\d{2,5} secs)
     color:
       1: f#ff99ff bold
 
   - descripton: Gigabit Ethernet
-    regex: (GigabitEthernet\d/\d{1,2}\.\d{1,10}|GigabitEthernet\d/\d{1,2}|Gi\d/\d{1,2}\.\d{1,10}|Gi\d/\d{1,2}|G\d/\d{1,2}\.\d{1,10}|G\d/\d{1,2}|Gigabit)
+    regex: (CPPDRV|GigabitEthernet\d/\d{1,2}\.\d{1,10}|GigabitEthernet\d/\d{1,2}|Gi\d/\d{1,2}\.\d{1,10}|Gi\d/\d{1,2}|G\d/\d{1,2}\.\d{1,10}|G\d/\d{1,2}|Gigabit|GigabitEthernet\d{1,8})
     color:
       1: f#007FFF bold
 
   - description: Ethernet
-    regex: ((?<![ ,])[^ ,>]+(?=>)|Ethernet\d/\d{1,2}\.\d{1,10}|Ethernet\d/\d{1,2}|Et\d/\d{1,2}\.\d{1,10}|Et\d/\d{1,2}|E\d/\d{1,2}.\d{1,10}|E\d/\d{1,2}|Ethernet)
+    regex: ((?<![ ,])[^ ,>]+(?=>)|Ethernet\d/\d{1,2}\.\d{1,10}|Ethernet\d/\d{1,2}|Et\d/\d{1,2}\.\d{1,10}|Et\d/\d{1,2}|E\d/\d{1,2}.\d{1,10}|E\d/\d{1,2}|Ethernet|Ethernet\d{1,8})
     color:
       1: f#007FFF bold
 
   - description: FastEthernet
-    regex: (vlan|VLAN|FastEthernet\d/\d{1,2}\.\d{1,10}|FastEthernet\d/\d{1,2}|Fa\d/\d{1,2}\.\d{1,10}|Fa\d/\d{1,2}|F\d/\d{1,2}\.\d{1,10}|F\d/\d{1,2}|FastEthernet)
+    regex: (vlan|VLAN|FastEthernet\d/\d{1,2}\.\d{1,10}|FastEthernet\d/\d{1,2}|Fa\d/\d{1,2}\.\d{1,10}|Fa\d/\d{1,2}|F\d/\d{1,2}\.\d{1,10}|F\d/\d{1,2}|FastEthernet|FastEthernet\d{1,8})
     color:
       1: f#007FFF bold
 
   - description: Serial
-    regex: (>|EIGRP|\sEX\ |D\ EX|D\ |UUID|PID|\ ID|^D\ \ |\ D\ |Serial\d/\d{1,2}\.\d{1,10}|Serial\d/\d{1,2}|Sr\d/\d{1,2}\.\d{1,10}|Sr\d/\d{1,2}|S\d/\d{1,2}.\d{1,10}|S\d/\d{1,2}|Serial)
+    regex: (SSH|>|EIGRP|\sEX\ |D\ EX|UUID|PID|\ ID|^D\ \ |\ D\ |Serial\d/\d{1,2}\.\d{1,10}|Serial\d/\d{1,2}|Sr\d/\d{1,2}\.\d{1,10}|Sr\d/\d{1,2}|S\d/\d{1,2}.\d{1,10}|S\d/\d{1,2}|Serial|Serial\d{1,8})
     color:
       1: f#e6e600 bold
   - description: Green
-    regex: (CHANGED|ADJCHG|NBRCHANGE|CONFIG_I|RESTART|\b\w+(?=\([^)]*\)#|#)|R\d{1,2}%\w*|R\d{1,2})
+    regex: (NON_AUTHORITATIVE_CLOCK|ADJCHG|NBRCHANGE|CONFIG_I|RESTART|\b\w+(?=\([^)]*\)#|#)|R\d{1,8}|CSR\d{1,8})
     color:
       1: f#ff1aff bold
 
   - description: orange
-    regex: (LINEPROTO|PLATFORM|AS-PATH|route-map|filter-list|BGP router|table|LINK|ADJCHANGE|COLDSTART|BGP|definition|forwarding|SW\d{1,2}|\ B\ |^B\ |BB\d|BB|PE\d{1,2}|CE\d{1,2}|P\d{1,2}|FRS|Sw\d{1,2})
+    regex: (LINEPROTO|PLATFORM|AS-PATH|[a-zA-Z]+[*]|route-map|filter-list|BGP router|table|LINK|ADJCHANGE|COLDSTART|BGP|definition|forwarding|SW\d{1,2}|\ B\ |^B\ |BB\d|BB|PE\d{1,2}|CE\d{1,2}|P\d{1,2}|FRS|Sw\d{1,2})
     color:
       1: f#ff6600 bold
 
   - descripton: llll
-    regex: (O\ |E[12]|IA|NSSA|OSPF_VL\d{1,2}|OSPF_SL\d{1,2}|VL\d{1,2}|SL\d{1,2}|Type\-\d|ospf|LOADING|OSPF|arp|ARP|cef|CEF)
+    regex: (O\ |O\ \ |ospfv3|\ E[12]\ |E[12]\ \ |IA\ |\*E[12]|OSPFv3|NSSA\d*|OSPF_VL\d{1,2}|OSPF_SL\d{1,2}|VL\d{1,2}|SL\d{1,2}|Type\-\d|ospf|LOADING|OSPF|arp|ARP|cef|CEF)
     color:
       1: f#9f0099 bold
 
@@ -155,7 +165,7 @@ rules:
       1: f#007FFF bold
 
   - description: new color :)
-    regex: (su\ |\ ia\ |\ i\ |IS-IS|L[12]|IGP|https?:\/\/[a-zA-Z0-9.-]+(:[0-9]+)?(\/[a-zA-Z0-9._-]+)*\/?)
+    regex: (su\ |\ ia\ |IS-IS|L[12]|IGP|https?:\/\/[a-zA-Z0-9.-]+(:[0-9]+)?(\/[a-zA-Z0-9._-]+)*\/?)
     color:
       1: f#28a9a5 bold
 
