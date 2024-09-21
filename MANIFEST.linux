@@ -1,3 +1,4 @@
+.gitconfig|symlink|.gitconfig
 pref/emacs/.emacs|symlink|.emacs
 pref/emacs/.emacs.rc|symlink|.emacs.rc
 pref/emacs/.emacs.snippets|symlink|.emacs.snippets
