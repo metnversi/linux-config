@@ -11,7 +11,7 @@ symlinkFile() {
 
   if [ -e "$destination" ] || [ -L "$destination" ]; then
     rm -rf "$destination"
-    echo -e "\033[31m [INFO] $destination exists and will be overwritten. \033[0m"
+    echo -e "\033[31m [INFO] $destination existed. Overwritten. \033[0m"
   fi
 
   ln -s "$filename" "$destination"
@@ -25,7 +25,7 @@ deployManifest() {
       symlinkFile "$filename" "$destination"
       ;;
     *)
-      echo -e "\033[33m [WARNING] Unknown operation $operation. Skipping... \033[0m"
+      echo -e "\033[33m [WARNING] $operation. Skipping... \033[0m"
       ;;
     esac
   done <"$SCRIPT_DIR/$1"

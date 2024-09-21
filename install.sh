@@ -34,21 +34,21 @@ fi
 sudo apt install -y $output
 sudo apt autoremove
 
-echo -e "\033[31m\033[1m --- Installing Iosevka font --- \033[0m"
+echo -e "\033[31m\033[1m --- Installing Iosevka Nerd font --- \033[0m"
 if fc-list | grep -i "Iosevka" >/dev/null; then
   echo "Iosevka font is already installed, SKIP"
 else
-  read -p "Install Iosevka font? (Y/n) " install
+  read -p "Install Iosevka Nerd font? (Y/n) " install
   case ${install:0:1} in
   n | N)
-    echo "Skipping installation of Iosevka font"
+    echo "Skipping installation of Iosevka Nerd font. Please install a nerd font for yourself manually!"
     ;;
   *)
     wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/Iosevka.zip -P /home/$ORIGINAL_USER/Downloads
     unzip /home/$ORIGINAL_USER/Downloads/*Iosevka*.zip -d /home/$ORIGINAL_USER/Downloads/Iosevka
     sudo mv /home/$ORIGINAL_USER/Downloads/Iosevka/*.ttf /usr/share/fonts/
     sudo fc-cache
-    echo "Installed font Iosevka, check /home/$ORIGINAL_USER/Downloads/ for archiving"
+    echo "Installed font Iosevka"
     ;;
   esac
 fi
