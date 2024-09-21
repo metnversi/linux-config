@@ -1,0 +1,29 @@
+import = ["~/.config/alacritty/cyberdream.toml"]
+
+[window]
+opacity = 0.5
+padding.x = 8
+padding.y = 8
+decorations = "Full"
+decorations_theme_variant = "Dark" # "Dark"
+
+[font]
+normal.family = "Iosevka Nerd Font"
+#normal.style = "bold"
+bold.family = "Iosevka Nerd Font"
+italic.family = "Iosevka Nerd Font"
+bold_italic.family = "Iosevka Nerd Font"
+size = 12.5
+
+[shell]
+program = "/bin/bash"
+args = ["-c", """
+function highlight_ip() {
+  rg --colors 'match:fg:red' -e '\\b\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\b' --passthru | less -R;
+}
+export -f highlight_ip
+exec bash
+"""]
+
+
+

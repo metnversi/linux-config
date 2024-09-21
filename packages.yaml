@@ -1,0 +1,52 @@
+required:
+  - zsh
+  - python3-pip
+  - tmux
+  - autoconf
+  - gcc
+  - make
+  - pkg-config
+  - libpam0g-dev
+  - libcairo2-dev
+  - libfontconfig1-dev
+  - libxcb-composite0-dev
+  - libev-dev
+  - libx11-xcb-dev
+  - libxcb-xkb-dev
+  - libxcb-xinerama0-dev
+  - libxcb-randr0-dev
+  - libxcb-image0-dev
+  - libxcb-util0-dev
+  - libxcb-xrm-dev
+  - libxkbcommon-dev
+  - libxkbcommon-x11-dev
+  - libjpeg-dev
+  - yarn
+  - vim-gtk3
+  - fortune
+  - cowsay
+
+gui:
+  - x11-utils
+  - xorg
+  - emacs
+  - i3
+  - i3status
+  - imagemagick
+  - copyq
+  - libnotify-bin
+  - shutter
+  - gimp
+  - okular
+  - libgtk-3-dev
+  - vlc
+  - acpi
+  - pulseaudio-utils
+
+optional:
+  - obs-studio
+  - g++
+  - gcc-multilib
+  - g++-multilib
+  - dialog
+  - libgl1-mesa-glx
