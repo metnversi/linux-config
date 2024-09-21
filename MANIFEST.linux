@@ -1,7 +1,7 @@
-pref/.emacs|symlink|.emacs
-.emacs.rc|symlink|.emacs.rc
-.emacs.snippets|symlink|.emacs.snippets
-.emacs.local|symlink|.emacs.local
+emacs/.emacs|symlink|.emacs
+emacs/.emacs.rc|symlink|.emacs.rc
+emacs/.emacs.snippets|symlink|.emacs.snippets
+emacs/.emacs.local|symlink|.emacs.local
 pref/.tmux.conf|symlink|.tmux.conf
 .vimrc|symlink|.vimrc
 pref/.bashrc|symlink|.bashrc
