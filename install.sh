@@ -2,7 +2,7 @@
 
 ORIGINAL_USER=$(logname)
 WORKDIR=$(pwd)
-
+echo -e "\033[31m\033[1m Make sure you checked packages.yaml for required packages, gui and optional packages! \033[0m"
 extract_section() {
   local section=$1
   awk -v section="$section" '
