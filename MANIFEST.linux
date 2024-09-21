@@ -17,3 +17,8 @@ pref/starship.toml|symlink|.config/starship.toml
 i3/polybarconfig.ini|symlink|.config/polybar/config.ini
 pref/.chromaterm.yml|symlink|.chromaterm.yml
 pref/alacritty.toml|symlink|.config/alacritty/alacritty.toml
+
+theme/cyberdream.toml|symlink|.config/alacritty/cyberdream.toml
+theme/cyberdream.tmuxtheme|symlink|.tmux/plugins/tmux/themes/catppuccin_cyberdream.tmuxtheme
+theme/cyberdream.lua|symlink|.config/wezterm/cyberdream.lua
+
