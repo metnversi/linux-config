@@ -1,4 +1,5 @@
 required:
+  - alacritty
   - zsh
   - python3-pip
   - tmux

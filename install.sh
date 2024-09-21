@@ -46,20 +46,14 @@ else
   *)
     wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/Iosevka.zip -P /home/$ORIGINAL_USER/Downloads
     unzip /home/$ORIGINAL_USER/Downloads/*Iosevka*.zip -d /home/$ORIGINAL_USER/Downloads/Iosevka
-    sudo mv /home/$ORIGINAL_USER/Downloads/ttf/*.ttf /usr/share/fonts/
+    sudo mv /home/$ORIGINAL_USER/Downloads/Iosevka/*.ttf /usr/share/fonts/
     sudo fc-cache
     echo "Installed font Iosevka, check /home/$ORIGINAL_USER/Downloads/ for archiving"
     ;;
   esac
 fi
 
-echo -e "\033[31m\033[1m --- Install oh-my-zsh, powerlevel10k, tmux plugins and nvim ---\033[0m"
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-git clone https://github.com/ohmyzsh/ohmyzsh.git ~/.oh-my-zsh
-git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-curl -sS https://starship.rs/install.sh | sh -s -- -y
-
 #install nvim
 curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux64.tar.gz
 sudo rm -rf /opt/nvim
@@ -73,5 +67,11 @@ echo -e "\033[31m\033[1m --- nodejs come there! \033[0m"
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.0/install.sh | bash
 nvm install 20
 
+curl -sS https://starship.rs/install.sh | sh -s -- -y
 source ~/.bashrc
+
+echo -e "\033[31m\033[1m --- Install oh-my-zsh, powerlevel10k ---\033[0m"
+git clone https://github.com/ohmyzsh/ohmyzsh.git ~/.oh-my-zsh
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 zsh
