@@ -185,8 +185,8 @@ bindsym $mod+n exec --no-startup-id wireshark
 bindsym $mod+q exec --no-startup-id gromit-mpx
 bindsym $mod+Shift+i exec ~/record.sh
 exec --no-startup-id feh --bg-scale ~/Pictures/b1.jpg
-#bindsym $mod+Return exec i3-sensible-terminal
-bindsym $mod+Return exec wezterm -e zsh
+bindsym $mod+Return exec alacritty -e zsh
+#bindsym $mod+Return exec wezterm -e zsh
 #bindsym $mod+Return exec wezterm
 # remove -e zsh to use default shell.
 

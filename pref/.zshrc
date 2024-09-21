@@ -5,7 +5,7 @@ fi
 export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME="powerlevel10k/powerlevel10k"
 CASE_SENSITIVE="true"
-ENABLE_CORRECTION="true"
+#ENABLE_CORRECTION="true"
 
 # zstyle ':omz:update' mode disabled  # disable automatic updates
 zstyle ':omz:update' mode auto      # update automatically without asking
@@ -69,4 +69,3 @@ complete -o nospace -C /usr/bin/terraform terraform
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 source <(kubectl completion zsh)
 ssh() { /usr/bin/ssh "$@" | ct; }
-ZSH_THEME="powerlevel10k/powerlevel10k"

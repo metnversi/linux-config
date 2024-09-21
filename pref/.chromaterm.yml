@@ -96,43 +96,46 @@ rules:
     regex: ([0-9a-f]{4}\.[0-9a-f]{4}\.[0-9a-f]{4}).*
     color: f#990099 bold
 
+  - description: Linux MAC address (Purple)
+    regex: \b([0-9a-fA-F]{2}:[0-9a-fA-F]{2}:[0-9a-fA-F]{2}:[0-9a-fA-F]{2}:[0-9a-fA-F]{2}:[0-9a-fA-F]{2})\b
+    color: f#990099 bold
+
   - description: Interfaces in shutdown (Red) no shutdown (Bright Green)
-    regex: ((\s\sshutdown)|\s\sno shutdown|CHANGED|UPDOWN|\ up|^C\ |\ C\ |PACONFIG|Up|UP|router ID|connected|duplex|backup|DUAL|SETUP|FUL|Loopback\d{1,2}|local|localhost|\ AS\ |\d{2,4} bytes)
+    regex: ((\s\sshutdown)|\s\sno shutdown|CHANGED|update|\ up|^C\ |\ C\ |C\ \ |PACONFIG|Up|UP|router ID|connected|duplex|backup|DUAL|SETUP|FULL|Loopback\d{1,2}|localhost|local|\ AS\ |\d{2,4} bytes)
     color:
       1: f#6CFF00 bold
-      2: f#ff0000 bold
 
   - description: red state + 100Gigabit ethernet
-    regex: ((NULL|null|Down|Null\d{1,2}|VoIP|Error|error|ERROR|downloaded|CRYPTO|SNMP|SYS|down|shutdown|summary|SUMMARY|administratively down|not|OFF|HundredGigabitEthernet\d/\d{1,2}\.\d{1,10}|HundredGigabitEthernet\d/\d{1,2}|Hu\d/\d{1,2}\.\d{1,10}|Hu\d/\d{1,2}|H\d/\d{1,2}\.\d{1,10}|H\d/\d{1,2}))
+    regex: ((#|NULL|UNKNOWN|null|Down|Null\d{1,2}|VoIP|Error|UPDOWN|DOWN|errors|error|ERROR|downloaded|CRYPTO|SNMP|SYS|down|shutdown|summary|SUMMARY|administratively down|not|OFF|HundredGigabitEthernet\d/\d{1,2}\.\d{1,10}|HundredGigabitEthernet\d/\d{1,2}|Hu\d/\d{1,2}\.\d{1,10}|Hu\d/\d{1,2}|H\d/\d{1,2}\.\d{1,10}|H\d/\d{1,2}))
     color:
       1: f#900000 bold
 
   - description: red line
-    regex: (Seq\#|Interface|LSA|IP-Address|OK|Method|Status|Protocol|Pri|\ S\ |static|\d{2,5} secs)
+    regex: (Status codes|Interface|LSA|IP-Address|OK|Method|Status|Protocol|Pri|\ S\ |static|\d{2,5} secs)
     color:
       1: f#ff99ff bold
 
   - descripton: Gigabit Ethernet
-    regex: (GigabitEthernet\d/\d{1,2}\.\d{1,10}|GigabitEthernet\d/\d{1,2}|Gi\d/\d{1,2}\.\d{1,10}|Gi\d/\d{1,2}|G\d/\d{1,2}\.\d{1,10}|G\d/\d{1,2})
+    regex: (GigabitEthernet\d/\d{1,2}\.\d{1,10}|GigabitEthernet\d/\d{1,2}|Gi\d/\d{1,2}\.\d{1,10}|Gi\d/\d{1,2}|G\d/\d{1,2}\.\d{1,10}|G\d/\d{1,2}|Gigabit)
     color:
       1: f#007FFF bold
 
   - description: Ethernet
-    regex: (Ethernet\d/\d{1,2}\.\d{1,10}|Ethernet\d/\d{1,2}|Et\d/\d{1,2}\.\d{1,10}|Et\d/\d{1,2}|E\d/\d{1,2}.\d{1,10}|E\d/\d{1,2})
+    regex: ((?<![ ,])[^ ,>]+(?=>)|Ethernet\d/\d{1,2}\.\d{1,10}|Ethernet\d/\d{1,2}|Et\d/\d{1,2}\.\d{1,10}|Et\d/\d{1,2}|E\d/\d{1,2}.\d{1,10}|E\d/\d{1,2}|Ethernet)
     color:
       1: f#007FFF bold
 
   - description: FastEthernet
-    regex: (vlan|VLAN|FastEthernet\d/\d{1,2}\.\d{1,10}|FastEthernet\d/\d{1,2}|Fa\d/\d{1,2}\.\d{1,10}|Fa\d/\d{1,2}|F\d/\d{1,2}\.\d{1,10}|F\d/\d{1,2})
+    regex: (vlan|VLAN|FastEthernet\d/\d{1,2}\.\d{1,10}|FastEthernet\d/\d{1,2}|Fa\d/\d{1,2}\.\d{1,10}|Fa\d/\d{1,2}|F\d/\d{1,2}\.\d{1,10}|F\d/\d{1,2}|FastEthernet)
     color:
       1: f#007FFF bold
 
   - description: Serial
-    regex: (EIGRP|\sEX\ |D\ EX|\ D\ |Serial\d/\d{1,2}\.\d{1,10}|Serial\d/\d{1,2}|Sr\d/\d{1,2}\.\d{1,10}|Sr\d/\d{1,2}|S\d/\d{1,2}.\d{1,10}|S\d/\d{1,2})
+    regex: (>|EIGRP|\sEX\ |D\ EX|D\ |UUID|PID|\ ID|^D\ \ |\ D\ |Serial\d/\d{1,2}\.\d{1,10}|Serial\d/\d{1,2}|Sr\d/\d{1,2}\.\d{1,10}|Sr\d/\d{1,2}|S\d/\d{1,2}.\d{1,10}|S\d/\d{1,2}|Serial)
     color:
       1: f#e6e600 bold
   - description: Green
-    regex: (R\d{1,2}%\w*|R\d{1,2}|CHANGED|ADJCHG|NBRCHANGE|CONFIG_I|RESTART)
+    regex: (CHANGED|ADJCHG|NBRCHANGE|CONFIG_I|RESTART|\b\w+(?=\([^)]*\)#|#)|R\d{1,2}%\w*|R\d{1,2})
     color:
       1: f#ff1aff bold
 
@@ -147,7 +150,7 @@ rules:
       1: f#9f0099 bold
 
   - description: hehe
-    regex: ((N[12]|P2P|P2MP|BDR|DR|ODR|ABR|ASBR|LOOP|vrf|VRF))
+    regex: ((N[12]|P2P|P2MP|BDR|DR|ODR|ABR|ASBR|BROADCAST|MULTICAST|LOOPBACK|LOOP|vrf|VRF))
     color:
       1: f#007FFF bold
 
@@ -165,5 +168,5 @@ rules:
     color: f#ff99ff bold
 
   - description: timestamp 1
-    regex: \b(?<!\.)([0-1]\d|2[0-3]):([0-5]\d):([0-5]\d)\b
+    regex: \b([01]\d|2[0-3]):([0-5]\d):([0-5]\d)\b
     color: f#ff99ff bold
