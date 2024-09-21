@@ -1,8 +1,6 @@
 #!/bin/bash
 #for other linux distro, simply change the 'apt-get'. Example 'dnf', 'yum' :>
 rm $HOME/.bashrc
-rm $HOME/Pictures
-mkdir $HOME/Pictures
 
 SCRIPT_DIR="$(cd "$(dirname "$BASH_SOUrcE[0]")" && pwd)"
 symlinkFile() {

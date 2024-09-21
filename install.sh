@@ -3,32 +3,56 @@
 ORIGINAL_USER=$(logname)
 WORKDIR=$(pwd)
 
-for file in "$WORKDIR"/*; do
-  if [ -f "$file" ]; then
-    sed -i "s/ubuntu/$ORIGINAL_USER/g" "$file"
-  fi
-done
+parse_yaml() {
+  local prefix=$2
+  local s='[[:space:]]*'
+  local w='[a-zA-Z0-9_]*'
+  local fs=$(echo @ | tr @ '\034')
+  sed -ne "s|^\($s\):|\1|" \
+    -e "s|^\($s\)\($w\)$s:$s\"\(.*\)\"$s\$|\1$fs\2$fs\3|p" \
+    -e "s|^\($s\)\($w\)$s:$s\(.*\)$s\$|\1$fs\2$fs\3|p" $1 |
+    awk -F$fs '{
+       indent = length($1)/2;
+       vname[indent] = $2;
+       for (i in vname) {if (i > indent) {delete vname[i]}}
+       if (length($3) > 0) {
+          vn=""; for (i=0; i<indent; i++) {vn=(vn)(vname[i])("_")}
+          printf("%s%s%s=\"%s\"\n", "'$prefix'", vn, $2, $3);
+       }
+    }'
+}
 
-# Install Iosevka font
+eval $(parse_yaml packages.yaml "config_")
+
+echo "Installing required packages..."
+sudo apt-get update
+sudo apt-get install -y ${config_required[@]}
+
+if [ "$(systemctl get-default)" = "graphical.target" ]; then
+  echo "Installing GUI packages..."
+  sudo apt install -y ${config_gui[@]}
+fi
+
+read -p "Do you want to install optional packages? (Y/n): " install_optional
+install_optional=${install_optional:-Y}
+if [[ "$install_optional" =~ ^[Yy]$ ]]; then
+  echo "Installing optional packages..."
+  sudo apt-get install -y ${config_optional[@]}
+fi
+
+python3 -m env ~/myenv
+
 echo "--- Installing Iosevka font ---"
 if fc-list | grep -i "Iosevka" >/dev/null; then
   echo "Iosevka font is already installed, SKIP"
 else
-  read -p "Do you want to install Iosevka font? (Y/n) " install
+  read -p "Install Iosevka font? (Y/n) " install
   case ${install:0:1} in
   n | N)
     echo "Skipping installation of Iosevka font"
     ;;
   *)
-    read -p "Do you want to download Iosevka font? (Y/n) " download
-    case ${download:0:1} in
-    n | N)
-      echo "Skipping download of Iosevka font"
-      ;;
-    *)
-      wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/Iosevka.zip -P /home/$ORIGINAL_USER/Downloads
-      ;;
-    esac
+    wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/Iosevka.zip -P /home/$ORIGINAL_USER/Downloads
     unzip /home/$ORIGINAL_USER/Downloads/*Iosevka*.zip -d /home/$ORIGINAL_USER/Downloads/Iosevka
     sudo mv /home/$ORIGINAL_USER/Downloads/ttf/*.ttf /usr/share/fonts/
     sudo fc-cache
@@ -37,92 +61,23 @@ else
   esac
 fi
 
-#echo "-- Installing Vim plugins"
-#echo "--- Installing Vundle ---"
-#if [ ! -d /home/$ORIGINAL_USER/.vim/bundle/Vundle.vim ]; then
-#    git clone https://github.com/VundleVim/Vundle.vim.git /home/$ORIGINAL_USER/.vim/bundle/Vundle.vim
-#else
-#    echo "Vundle is already installed, SKIP"
-#fi
-#echo "--- Installing Jellybeans ---"
-#if [ ! -d /home/$ORIGINAL_USER/.vim/pack/themes/start/jellybeans ]; then
-#    git clone https://github.com/nanotech/jellybeans.vim.git /home/$ORIGINAL_USER/.vim/pack/themes/start/jellybeans
-#else
-#    echo "Jellybeans is already installed, SKIP"
-#fi
+echo "--- install oh-my-zsh ---"
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+git clone https://github.com/ohmyzsh/ohmyzsh.git ~/.oh-my-zsh
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+curl -sS https://starship.rs/install.sh | sh
 
-#echo "--- Running :PluginInstall ---"
-#vim +PluginInstall +qall
-#echo "--- Done install Vim Plugin ---"
+#install nvim
+curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux64.tar.gz
+sudo rm -rf /opt/nvim
+sudo tar -C /opt -xzf nvim-linux64.tar.gz
+rm nvim-linux64.tar.gz
+source ~/.bashrc
+zsh
 
-read -p "Do you want to install oh-my-zsh [Y/n] " -n 1 -r
-if [[ ! $REPLY =~ ^[Nn]$ ]]; then
-  echo "--- install oh-my-zsh ---"
-  sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-  git clone https://github.com/ohmyzsh/ohmyzsh.git ~/.oh-my-zsh
-  git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
-  curl -sS https://starship.rs/install.sh | sh
+echo "In Rust we trust!"
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
-  #install nvim
-  curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux64.tar.gz
-  sudo rm -rf /opt/nvim
-  sudo tar -C /opt -xzf nvim-linux64.tar.gz
-else
-  echo "skip oh my zsh"
-fi
-
-installPackages() {
-  while IFS= read -r package; do
-    # Skip if the line starts with '#'
-    if [[ $package == \#* ]]; then
-      continue
-    fi
-
-    # Check if the line starts with '!'
-    if [[ $package == \!* ]]; then
-      # Remove '!' from the start of the package name
-      package=${package:1}
-
-      # Ask the user whether to install the package
-      read -p "Optional package $package detected. Do you want to install it? [Y/n] " -n 1 -r
-      echo # move to a new line
-      if [[ ! $REPLY =~ ^[Nn]$ ]]; then
-        echo "--- Installing optional package $package ---"
-      else
-        echo "--- Skipping optional package $package ---"
-        continue
-      fi
-    else
-      echo "--- Installing $package ---"
-    fi
-
-    if dpkg -s $package >/dev/null 2>&1; then
-      echo "$package is already installed, SKIP"
-    else
-      sudo apt-get install -y $package
-    fi
-  done <"$1"
-}
-installPackages packages.txt
-pip3 install chromaterm
-python3 -m env ~/myenv
-read -p "Do you want to install AWC CLI? [Y/n] " -n 1 -r
-echo # move to a new line
-if [[ ! $REPLY =~ ^[Nn]$ ]]; then
-  curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
-  unzip awscliv2.zip
-  sudo ./aws/install
-  echo "If you want install Terraform, come this link below:"
-  echo "https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli"
-  echo "Intall docker by link below:"
-  echo "https://docs.docker.com/engine/install/debian/"
-  echo "Install minikube by link below:"
-  echo "https://minikube.sigs.k8s.io/docs/start/?arch=%2Flinux%2Fx86-64%2Fstable%2Fbinary+download"
-  echo "optional: minIO,google-chrome, search by yourself!"
-else
-  echo "--- Skipping AWS ---"
-  echo "--- HELLO WORLD! ---"
-fi
-echo "--System is going to reboot after 10s!--"
-sleep 10
-sudo reboot
+echo "nodejs come there!"
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.0/install.sh | bash
+nvm install 20
