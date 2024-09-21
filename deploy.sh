@@ -11,11 +11,11 @@ symlinkFile() {
 
   if [ -e "$destination" ] || [ -L "$destination" ]; then
     rm -rf "$destination"
-    echo "[INFO] $destination exists and will be overwritten."
+    echo -e "\033[31m [INFO] $destination exists and will be overwritten. \033[0m"
   fi
 
   ln -s "$filename" "$destination"
-  echo "[OK] $filename -> $destination"
+  echo -e "\033[32m [OK] $filename -> $destination \033[0m"
 }
 
 deployManifest() {
@@ -25,14 +25,14 @@ deployManifest() {
       symlinkFile "$filename" "$destination"
       ;;
     *)
-      echo "[WARNING] Unknown operation $operation. Skipping..."
+      echo -e "\033[33m [WARNING] Unknown operation $operation. Skipping... \033[0m"
       ;;
     esac
   done <"$SCRIPT_DIR/$1"
 }
 
-git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-
 echo "--- Linux configs ---"
 deployManifest MANIFEST.linux
+echo "******"
+echo "******"
 "$(dirname $0)/install.sh"

@@ -15,7 +15,7 @@ extract_section() {
 required_packages=$(extract_section "required:" | paste -sd ' ' -)
 gui_packages=$(extract_section "gui:" | paste -sd ' ' -)
 optional_packages=$(extract_section "optional:" | paste -sd ' ' -)
-read -p "Do you want optional [Y/n]? " include_optional
+read -p $'\033[31m\033[1m Do you want optional [Y/n]? \033[0m' include_optional
 
 if [[ "$include_optional" =~ ^[Yy]$ || -z "$include_optional" ]]; then
   if [ "$(systemctl get-default)" = "graphical.target" ]; then
@@ -34,7 +34,7 @@ fi
 sudo apt install -y $output
 sudo apt autoremove
 
-echo "--- Installing Iosevka font ---"
+echo -e "\033[31m\033[1m --- Installing Iosevka font --- \033[0m"
 if fc-list | grep -i "Iosevka" >/dev/null; then
   echo "Iosevka font is already installed, SKIP"
 else
@@ -53,11 +53,12 @@ else
   esac
 fi
 
-echo "--- install oh-my-zsh ---"
+echo -e "\033[31m\033[1m --- Install oh-my-zsh, powerlevel10k, tmux plugins and nvim ---\033[0m"
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 git clone https://github.com/ohmyzsh/ohmyzsh.git ~/.oh-my-zsh
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
-curl -sS https://starship.rs/install.sh | sh
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+curl -sS https://starship.rs/install.sh | sh -s -- -y
 
 #install nvim
 curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux64.tar.gz
@@ -67,9 +68,9 @@ rm nvim-linux64.tar.gz
 source ~/.bashrc
 zsh
 
-echo "In Rust we trust!"
+echo -e "\033[31m\033[1m ---In Rust we trust!--- \033[0m"
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
-echo "nodejs come there!"
+echo -e "\033[31m\033[1m --- nodejs come there! \033[0m"
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.0/install.sh | bash
 nvm install 20
