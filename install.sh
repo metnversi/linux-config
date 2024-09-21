@@ -3,43 +3,36 @@
 ORIGINAL_USER=$(logname)
 WORKDIR=$(pwd)
 
-parse_yaml() {
-  local prefix=$2
-  local s='[[:space:]]*'
-  local w='[a-zA-Z0-9_]*'
-  local fs=$(echo @ | tr @ '\034')
-  sed -ne "s|^\($s\):|\1|" \
-    -e "s|^\($s\)\($w\)$s:$s\"\(.*\)\"$s\$|\1$fs\2$fs\3|p" \
-    -e "s|^\($s\)\($w\)$s:$s\(.*\)$s\$|\1$fs\2$fs\3|p" $1 |
-    awk -F$fs '{
-       indent = length($1)/2;
-       vname[indent] = $2;
-       for (i in vname) {if (i > indent) {delete vname[i]}}
-       if (length($3) > 0) {
-          vn=""; for (i=0; i<indent; i++) {vn=(vn)(vname[i])("_")}
-          printf("%s%s%s+=(\"%s\")\n", "'$prefix'", vn, $2, $3);
-       }
-    }'
+extract_section() {
+  local section=$1
+  awk -v section="$section" '
+    $0 ~ section {flag=1; next}
+    $0 ~ /^ *-/ && flag {print $2; next}
+    $0 !~ /^ *-/ && flag {flag=0}
+    ' packages.yaml
 }
 
-eval $(parse_yaml packages.yaml "config_")
-echo "Installing required packages..."
-sudo apt update
-sudo apt install -y "${config_required[@]}"
+required_packages=$(extract_section "required:" | paste -sd ' ' -)
+gui_packages=$(extract_section "gui:" | paste -sd ' ' -)
+optional_packages=$(extract_section "optional:" | paste -sd ' ' -)
+read -p "Do you want optional [Y/n]? " include_optional
 
-if [ "$(systemctl get-default)" = "graphical.target" ]; then
-  echo "Installing GUI packages..."
-  sudo apt install -y "${config_gui[@]}"
+if [[ "$include_optional" =~ ^[Yy]$ || -z "$include_optional" ]]; then
+  if [ "$(systemctl get-default)" = "graphical.target" ]; then
+    output="$required_packages $gui_packages $optional_packages"
+  else
+    output="$required_packages $optional_packages"
+  fi
+else
+  if [ "$(systemctl get-default)" = "graphical.target" ]; then
+    output="$required_packages $gui_packages"
+  else
+    output="$required_packages"
+  fi
 fi
 
-read -p "Do you want to install optional packages? (Y/n): " install_optional
-install_optional=${install_optional:-Y}
-if [[ "$install_optional" =~ ^[Yy]$ ]]; then
-  echo "Installing optional packages..."
-  sudo apt install -y "${config_optional[@]}"
-fi
-
-python3 -m env ~/myenv
+sudo apt install -y $output
+sudo apt autoremove
 
 echo "--- Installing Iosevka font ---"
 if fc-list | grep -i "Iosevka" >/dev/null; then
