@@ -17,27 +17,26 @@ parse_yaml() {
        for (i in vname) {if (i > indent) {delete vname[i]}}
        if (length($3) > 0) {
           vn=""; for (i=0; i<indent; i++) {vn=(vn)(vname[i])("_")}
-          printf("%s%s%s=\"%s\"\n", "'$prefix'", vn, $2, $3);
+          printf("%s%s%s+=(\"%s\")\n", "'$prefix'", vn, $2, $3);
        }
     }'
 }
 
 eval $(parse_yaml packages.yaml "config_")
-
 echo "Installing required packages..."
-sudo apt-get update
-sudo apt-get install -y ${config_required[@]}
+sudo apt update
+sudo apt install -y "${config_required[@]}"
 
 if [ "$(systemctl get-default)" = "graphical.target" ]; then
   echo "Installing GUI packages..."
-  sudo apt install -y ${config_gui[@]}
+  sudo apt install -y "${config_gui[@]}"
 fi
 
 read -p "Do you want to install optional packages? (Y/n): " install_optional
 install_optional=${install_optional:-Y}
 if [[ "$install_optional" =~ ^[Yy]$ ]]; then
   echo "Installing optional packages..."
-  sudo apt-get install -y ${config_optional[@]}
+  sudo apt install -y "${config_optional[@]}"
 fi
 
 python3 -m env ~/myenv
