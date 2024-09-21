@@ -5,7 +5,7 @@ To load icon, u need to install a nerd fonts, refer [there](https://www.nerdfont
 ## Deployment
 
 ```Bash
-git clone https://github.com/metnversi/linux-config.git
-cd linux-config
+git clone https://github.com/metnversi/dotfiles.git
+cd dotfiles
 ./deploy.sh
 ```
