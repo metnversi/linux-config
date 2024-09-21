@@ -65,8 +65,6 @@ curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux64.
 sudo rm -rf /opt/nvim
 sudo tar -C /opt -xzf nvim-linux64.tar.gz
 rm nvim-linux64.tar.gz
-source ~/.bashrc
-zsh
 
 echo -e "\033[31m\033[1m ---In Rust we trust!--- \033[0m"
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
@@ -74,3 +72,6 @@ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 echo -e "\033[31m\033[1m --- nodejs come there! \033[0m"
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.0/install.sh | bash
 nvm install 20
+
+source ~/.bashrc
+zsh
