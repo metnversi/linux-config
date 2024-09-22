@@ -31,8 +31,8 @@ deployManifest() {
   done <"$SCRIPT_DIR/$1"
 }
 
-echo "--- Linux configs ---"
 deployManifest MANIFEST.linux
-echo "******"
-echo "******"
+echo "************************************************************"
+echo "************************************************************"
+echo -e "\033[33m Begin install package....\033[0m"
 "$(dirname $0)/install.sh"

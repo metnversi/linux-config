@@ -31,8 +31,9 @@ else
   fi
 fi
 
-sudo apt install -y $output
+sudo apt install -y --ignore-missing $output
 sudo apt autoremove
+echo -e "\033[31m Some packages maybe missing due to different naming. Please check the log in /var/log/apt/! \033[0m"
 
 echo -e "\033[31m\033[1m --- Installing Iosevka Nerd font --- \033[0m"
 if fc-list | grep -i "Iosevka" >/dev/null; then
@@ -48,7 +49,7 @@ else
     unzip /home/$ORIGINAL_USER/Downloads/*Iosevka*.zip -d /home/$ORIGINAL_USER/Downloads/Iosevka
     sudo mv /home/$ORIGINAL_USER/Downloads/Iosevka/*.ttf /usr/share/fonts/
     sudo fc-cache
-    echo "Installed font Iosevka"
+    echo -e "\033[31m\033[1m Installed font Iosevka \033[0m"
     ;;
   esac
 fi
@@ -71,7 +72,7 @@ curl -sS https://starship.rs/install.sh | sh -s -- -y
 source ~/.bashrc
 
 echo -e "\033[31m\033[1m --- Install oh-my-zsh, powerlevel10k ---\033[0m"
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 git clone https://github.com/ohmyzsh/ohmyzsh.git ~/.oh-my-zsh
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 zsh
