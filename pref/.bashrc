@@ -123,7 +123,8 @@ case ":$PATH:" in
 esac
 
 ssh() { TERM=xterm-256color /usr/bin/ssh "$@" | ct; }
-
+alias mssh='ct multipass shell'
+alias ssh='TERM=xterm-256color ct ssh'
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH=$BUN_INSTALL/bin:$PATH

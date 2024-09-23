@@ -1,16 +1,14 @@
 local wezterm = require("wezterm")
 local config = {}
---config.colors = require("cyberdream")
+config.colors = require("cyberdream")
 config.font = wezterm.font_with_fallback({
 	{
 		family = "Iosevka Nerd Font",
-		weight = "Medium",
+		weight = "Light", -- Thin, ExtraLight, DemiLight, Light, Book, Medium,...
 	},
-	{
-		family = "Iosevka Nerd Font Mono",
-		weight = "Medium",
-	},
+	{ family = "Iosevka Nerd Font Mono", weight = "ExtraLight" },
 })
+config.font_size = 18
 config.anti_alias_custom_block_glyphs = true
 config.hide_tab_bar_if_only_one_tab = true
 config.use_fancy_tab_bar = true
@@ -34,6 +32,15 @@ config.keys = {
 	{ mods = "CMD", key = "RightArrow", action = wezterm.action.SendKey({ mods = "CTRL", key = "e" }) },
 	{ mods = "CMD", key = "Backspace", action = wezterm.action.SendKey({ mods = "CTRL", key = "u" }) },
 }
+config.background = {
+	{
+		source = {
+			File = "/home/anna/Pictures/e7/bellona.png",
+		},
+		hsb = { brightness = 0.02 },
+	},
+}
+config.default_prog = { "/usr/bin/zsh", "-l" }
 config.bypass_mouse_reporting_modifiers = "SHIFT"
 config.debug_key_events = true
 config.window_background_opacity = 0.5

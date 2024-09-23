@@ -67,8 +67,11 @@ alias ff='firefox &'
 alias bb='librewolf &'
 alias cf='fortune | cowsay'
 alias ddr='wezterm imgcat '
-alias cat='bat --theme="Catppuccin Latte" -p '
+alias cat='bat --theme="Catppuccin Macchiato" -p ' #bat --list-themes
+alias mssh='ct multipass shell'
+alias ssh='TERM=xterm-256color ct ssh'
 
+#colorized man page
 export LESS_TERMCAP_mb=$'\e[1;32m'
 export LESS_TERMCAP_md=$'\e[1;32m'
 export LESS_TERMCAP_me=$'\e[0m'
@@ -92,21 +95,18 @@ typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
 source $ZSH/oh-my-zsh.sh
 
 # Move welcome.sh after oh-my-zsh.sh to avoid initialization issues
-/home/$USER/welcome.sh
-fortune | cowsay
+#/home/$USER/welcome.sh
+#fortune | cowsay
 
-#bun
+#bun and fzf
 export BUN_INSTALL="$HOME/.bun"
 export PATH=$BUN_INSTALL/bin:$PATH
-
-autoload -U +X bashcompinit && bashcompinit
-complete -o nospace -C /usr/bin/terraform terraform
-
-ssh() { TERM=xterm-256color /usr/bin/ssh "$@" | ct; }
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-
 export FZF_DEFAULT_OPTS=" \
 --color=bg+:#313244,bg:#1e1e2e,spinner:#f5e0dc,hl:#f38ba8 \
 --color=fg:#cdd6f4,header:#f38ba8,info:#cba6f7,pointer:#f5e0dc \
 --color=marker:#f5e0dc,fg+:#cdd6f4,prompt:#cba6f7,hl+:#f38ba8"
 
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /usr/bin/terraform terraform
+
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"

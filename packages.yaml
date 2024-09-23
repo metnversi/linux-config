@@ -27,6 +27,7 @@ required:
   - fortune
   - cowsay
   - bat
+  - feh
 
 gui:
   - x11-utils

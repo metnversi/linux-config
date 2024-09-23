@@ -101,7 +101,7 @@ rules:
     color: f#990099 bold
 
   - description: Interfaces in shutdown (Red) no shutdown (Bright Green)
-    regex: (Enabled|\ L\ |^L\ |(\s\sshutdown)|\s\sno shutdown|upgrade|updated|update|\ up|^C\ |\ C\ |C\ \ |PACONFIG|UP|router ID|connected|duplex|backup|DUAL|SETUP|FULL|Loopback\d{1,2}|localhost|local|\d{1,8} bytes)
+    regex: (Enabled|\ L\ |^L\ |(\s\sshutdown)|\s\sno shutdown|\ updated|\ updates|\ update|\ up|^C\ |\ C\ |C\ \ |UP|router ID|connected|duplex|backup|DUAL|SETUP|FULL|Loopback\d{1,2}|localhost|local|\d{1,8} bytes)
     color:
       1: f#6CFF00 bold
 
@@ -111,12 +111,12 @@ rules:
       1: f#6CFF00 bold
 
   - description: red state + 100Gigabit ethernet
-    regex: ((LEVEL|\ esp\ |#|SEULA|EULA|NULL|UNKNOWN|null|Downloading|Downloaded|Down|Null\d{1,2}|VoIP|Errors|Error|UPDOWN|DOWN|errors|error|ERROR|downloaded|SNMP|SYS|downloading|down|shutdown|summary|SUMMARY|administratively down|not\ |OFF|HundredGigabitEthernet\d/\d{1,2}\.\d{1,10}|HundredGigabitEthernet\d/\d{1,2}|Hu\d/\d{1,2}\.\d{1,10}|Hu\d/\d{1,2}|H\d/\d{1,2}\.\d{1,10}|H\d/\d{1,2}))
+    regex: ((LEVEL|\ esp\ |#|SEULA|EULA|NULL|UNKNOWN|null|\ upgrade|Downloading|Downloaded|Down|Null\d{1,2}|VoIP|Errors|Error|DOWN|errors|error|ERROR|downloaded|SNMP|SYS|downloading|down|shutdown|summary|SUMMARY|administratively down|not\ |OFF|HundredGigabitEthernet\d/\d{1,2}\.\d{1,10}|HundredGigabitEthernet\d/\d{1,2}|Hu\d/\d{1,2}\.\d{1,10}|Hu\d/\d{1,2}|H\d/\d{1,2}\.\d{1,10}|H\d/\d{1,2}))
     color:
       1: f#900000 bold
 
-  - description: red state + 100Gigabit ethernet
-    regex: ((?<=-\d-)([A-Za-z0-9_]+)|hostname|no\ |STOPPED|stopped|PKI|PNP|AUTONOMOUS|EVENT|STATUS|DBG|EXTENDED|SYSID|DISABLED|CSDL|CRYPTO_ENGINE)
+  - description: red state
+    regex: ((?<=-\d-)([A-Za-z0-9_]+)|hostname|(?<=\[)[^\]]+(?=\])|(?<=\()[^\)]+(?=\))|no\ |STOPPED|stopped|PKI|AUTONOMOUS|EVENT|STATUS|DBG|EXTENDED|SYSID|DISABLED|CSDL|CRYPTO_ENGINE)
     color:
       1: f#900000 bold
 
@@ -126,7 +126,7 @@ rules:
       1: f#ff99ff bold
 
   - descripton: Gigabit Ethernet
-    regex: (CPPDRV|GigabitEthernet\d/\d{1,2}\.\d{1,10}|GigabitEthernet\d/\d{1,2}|Gi\d/\d{1,2}\.\d{1,10}|Gi\d/\d{1,2}|G\d/\d{1,2}\.\d{1,10}|G\d/\d{1,2}|Gigabit|GigabitEthernet\d{1,8})
+    regex: (GigabitEthernet\d/\d{1,2}\.\d{1,10}|GigabitEthernet\d/\d{1,2}|Gi\d/\d{1,2}\.\d{1,10}|Gi\d/\d{1,2}|G\d/\d{1,2}\.\d{1,10}|G\d/\d{1,2}|GigabitEthernet\d{1,7}|Gigabit)
     color:
       1: f#007FFF bold
 
@@ -141,7 +141,7 @@ rules:
       1: f#007FFF bold
 
   - description: Serial
-    regex: (SSH|>|EIGRP|\sEX\ |D\ EX|UUID|PID|\ IDLE|\ ID|^D\ \ |\ D\ |Serial\d/\d{1,2}\.\d{1,10}|Serial\d/\d{1,2}|Sr\d/\d{1,2}\.\d{1,10}|Sr\d/\d{1,2}|S\d/\d{1,2}.\d{1,10}|S\d/\d{1,2}|Serial|Serial\d{1,8})
+    regex: (Process|SSH|>|EIGRP|\sEX\ |D\ EX|UUID|PID|\ IDLE|\ ID|^D\ \ |\ D\ |Serial\d/\d{1,2}\.\d{1,10}|Serial\d/\d{1,2}|Sr\d/\d{1,2}\.\d{1,10}|Sr\d/\d{1,2}|S\d/\d{1,2}.\d{1,10}|S\d/\d{1,2}|Serial|Serial\d{1,8})
     color:
       1: f#e6e600 bold
   - description: Green
@@ -150,7 +150,7 @@ rules:
       1: f#ff1aff bold
 
   - description: orange
-    regex: (LINEPROTO|PLATFORM|AS-PATH|[a-zA-Z]+[*]|route-map|filter-list|BGP router|iptables|tables|table|LINK|ADJCHANGE|COLDSTART|BGP|definition|forwarding|SW\d{1,2}|\ B\ |^B\ |BB\d|BB|PE\d{1,2}|CE\d{1,2}|P\d{1,2}|FRS|Sw\d{1,2})
+    regex: (LINEPROTO|PLATFORM|AS-PATH|[a-zA-Z]+[*]|route-map|filter-list|BGP router|iptables|tables|table|LINK|ADJCHANGE|COLDSTART|BGP|definition|forwarding|SW\d{1,2}|\ B\ |^B\ |BB\d|BB|PE\d{1,2}|CE\d{1,2}|FRS|Sw\d{1,2})
     color:
       1: f#ff6600 bold
 
@@ -160,12 +160,12 @@ rules:
       1: f#9f0099 bold
 
   - description: hehe
-    regex: ((N[12]|P2P|P2MP|BDR|DR|ODR|ABR|ASBR|BROADCAST|MULTICAST|LOOPBACK|LOOP|vrf|VRF))
+    regex: ((N[12]|P2P|P2MP|BDR|DROTHER|\ DR|\ ODR|ABR|ASBR|BROADCAST|MULTICAST|LOOPBACK|LOOP|vrf|VRF))
     color:
       1: f#007FFF bold
 
   - description: new color :)
-    regex: (su\ |\ ia\ |IS-IS|L[12]|IGP|https?:\/\/[a-zA-Z0-9.-]+(:[0-9]+)?(\/[a-zA-Z0-9._-]+)*\/?)
+    regex: (su\ |\ ia\ |IS-IS|2WAY|L[12]|IGP|https?:\/\/[a-zA-Z0-9.-]+(:[0-9]+)?(\/[a-zA-Z0-9._-]+)*\/?)
     color:
       1: f#28a9a5 bold
 

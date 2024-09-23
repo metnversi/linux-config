@@ -1,6 +1,6 @@
 -- cyberdream theme for wezterm
 return {
-	foreground = "#ffffff",
+	foreground = "#cccccc",
 	background = "#16181a",
 
 	cursor_bg = "#ffffff",
