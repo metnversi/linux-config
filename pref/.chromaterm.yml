@@ -101,7 +101,7 @@ rules:
     color: f#990099 bold
 
   - description: Interfaces in shutdown (Red) no shutdown (Bright Green)
-    regex: (Enabled|\ L\ |^L\ |(\s\sshutdown)|\s\sno shutdown|upgrade|update|\ up|^C\ |\ C\ |C\ \ |PACONFIG|UP|router ID|connected|duplex|backup|DUAL|SETUP|FULL|Loopback\d{1,2}|localhost|local|\d{1,8} bytes)
+    regex: (Enabled|\ L\ |^L\ |(\s\sshutdown)|\s\sno shutdown|upgrade|updated|update|\ up|^C\ |\ C\ |C\ \ |PACONFIG|UP|router ID|connected|duplex|backup|DUAL|SETUP|FULL|Loopback\d{1,2}|localhost|local|\d{1,8} bytes)
     color:
       1: f#6CFF00 bold
 
@@ -111,7 +111,7 @@ rules:
       1: f#6CFF00 bold
 
   - description: red state + 100Gigabit ethernet
-    regex: ((LEVEL|\ esp\ |#|SEULA|EULA|NULL|UNKNOWN|null|Down|Null\d{1,2}|VoIP|Errors|Error|UPDOWN|DOWN|errors|error|ERROR|downloaded|SNMP|SYS|down|shutdown|summary|SUMMARY|administratively down|not\ |OFF|HundredGigabitEthernet\d/\d{1,2}\.\d{1,10}|HundredGigabitEthernet\d/\d{1,2}|Hu\d/\d{1,2}\.\d{1,10}|Hu\d/\d{1,2}|H\d/\d{1,2}\.\d{1,10}|H\d/\d{1,2}))
+    regex: ((LEVEL|\ esp\ |#|SEULA|EULA|NULL|UNKNOWN|null|Downloading|Downloaded|Down|Null\d{1,2}|VoIP|Errors|Error|UPDOWN|DOWN|errors|error|ERROR|downloaded|SNMP|SYS|downloading|down|shutdown|summary|SUMMARY|administratively down|not\ |OFF|HundredGigabitEthernet\d/\d{1,2}\.\d{1,10}|HundredGigabitEthernet\d/\d{1,2}|Hu\d/\d{1,2}\.\d{1,10}|Hu\d/\d{1,2}|H\d/\d{1,2}\.\d{1,10}|H\d/\d{1,2}))
     color:
       1: f#900000 bold
 
@@ -141,7 +141,7 @@ rules:
       1: f#007FFF bold
 
   - description: Serial
-    regex: (SSH|>|EIGRP|\sEX\ |D\ EX|UUID|PID|\ ID|^D\ \ |\ D\ |Serial\d/\d{1,2}\.\d{1,10}|Serial\d/\d{1,2}|Sr\d/\d{1,2}\.\d{1,10}|Sr\d/\d{1,2}|S\d/\d{1,2}.\d{1,10}|S\d/\d{1,2}|Serial|Serial\d{1,8})
+    regex: (SSH|>|EIGRP|\sEX\ |D\ EX|UUID|PID|\ IDLE|\ ID|^D\ \ |\ D\ |Serial\d/\d{1,2}\.\d{1,10}|Serial\d/\d{1,2}|Sr\d/\d{1,2}\.\d{1,10}|Sr\d/\d{1,2}|S\d/\d{1,2}.\d{1,10}|S\d/\d{1,2}|Serial|Serial\d{1,8})
     color:
       1: f#e6e600 bold
   - description: Green
@@ -150,7 +150,7 @@ rules:
       1: f#ff1aff bold
 
   - description: orange
-    regex: (LINEPROTO|PLATFORM|AS-PATH|[a-zA-Z]+[*]|route-map|filter-list|BGP router|table|LINK|ADJCHANGE|COLDSTART|BGP|definition|forwarding|SW\d{1,2}|\ B\ |^B\ |BB\d|BB|PE\d{1,2}|CE\d{1,2}|P\d{1,2}|FRS|Sw\d{1,2})
+    regex: (LINEPROTO|PLATFORM|AS-PATH|[a-zA-Z]+[*]|route-map|filter-list|BGP router|iptables|tables|table|LINK|ADJCHANGE|COLDSTART|BGP|definition|forwarding|SW\d{1,2}|\ B\ |^B\ |BB\d|BB|PE\d{1,2}|CE\d{1,2}|P\d{1,2}|FRS|Sw\d{1,2})
     color:
       1: f#ff6600 bold
 

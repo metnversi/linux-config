@@ -1,5 +1,5 @@
 required:
-  - alacritty
+  - curl
   - zsh
   - python3-pip
   - tmux
@@ -26,6 +26,7 @@ required:
   - vim-gtk3
   - fortune
   - cowsay
+  - bat
 
 gui:
   - x11-utils
@@ -36,7 +37,6 @@ gui:
   - imagemagick
   - copyq
   - libnotify-bin
-  - shutter
   - gimp
   - okular
   - libgtk-3-dev
@@ -45,6 +45,7 @@ gui:
   - pulseaudio-utils
 
 optional:
+  - shutter
   - obs-studio
   - g++
   - gcc-multilib

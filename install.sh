@@ -33,6 +33,7 @@ fi
 
 sudo apt install -y --ignore-missing $output
 sudo apt autoremove
+ln -s /usr/bin/batcat ~/.local/bin/bat
 echo -e "\033[31m Some packages maybe missing due to different naming. Please check the log in /var/log/apt/! \033[0m"
 
 echo -e "\033[31m\033[1m --- Installing Iosevka Nerd font --- \033[0m"
@@ -71,8 +72,13 @@ nvm install 20
 curl -sS https://starship.rs/install.sh | sh -s -- -y
 source ~/.bashrc
 
+curl -fsSL https://bun.sh/install | bash
+
 echo -e "\033[31m\033[1m --- Install oh-my-zsh, powerlevel10k ---\033[0m"
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 git clone https://github.com/ohmyzsh/ohmyzsh.git ~/.oh-my-zsh
+git clone https://github.com/oldratlee/hacker-quotes.git ~/.oh-my-zsh/custom/plugins/hacker-quotes
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
 zsh
