@@ -65,7 +65,7 @@ alias clea='clear'
 alias gg='google-chrome-stable &'
 alias vim='nvim'
 alias ff='firefox &'
-alias bb='librewolf &'
+alias cat='bat --theme="Catppuccin Latte" -p '
 
 export GTK_IM_MODULE=ibus
 export XMODIFIERS=@im=ibus
@@ -85,16 +85,45 @@ fi
 export LS_COLORS="di=34:fi=37"
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib
 
+export LESS_TERMCAP_mb=$'\e[1;32m'
+export LESS_TERMCAP_md=$'\e[1;32m'
+export LESS_TERMCAP_me=$'\e[0m'
+export LESS_TERMCAP_se=$'\e[0m'
+export LESS_TERMCAP_so=$'\e[01;33m'
+export LESS_TERMCAP_ue=$'\e[0m'
+export LESS_TERMCAP_us=$'\e[1;4;31m'
+
 complete -C /usr/bin/terraform terraform
+
+export PNPM_HOME="/home/$USER/.local/share/pnpm"
+case ":$PATH:" in
+*":$PNPM_HOME:"*) ;;
+*) export PATH="$PNPM_HOME:$PATH" ;;
+esac
 
 /home/$USER/welcome.sh
 VDPAU_DRIVER=nvidia
 EDITOR=/opt/nvim-linux64/bin/
 
-PATH=/home/$USER/.nimble/bin:/opt/nvim-linux64/bin:/home/$USER/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:/usr/bin:/usr/bin:/snap/bin:/usr/sbin:/home/$USER/.local/bin:/usr/local/go/bin
-PATH="$PATH:/opt/nvim-linux64/bin"
+PATH=/home/$USER/.nimble/bin:/opt/nvim-linux64/bin:/home/$USER/bin:/usr/local/bin:/bin:/usr/local/games:/usr/games:/usr/bin:/snap/bin:/usr/sbin:/home/$USER/.local/bin:/usr/local/go/bin
+PATH="$PATH:/opt/nvim-linux64/bin:/home/linuxbrew/.linuxbrew/bin"
 . "$HOME/.cargo/env"
 eval "$(starship init bash)"
-
+eval "$(fzf --bash)"
+eval "$(zoxide init bash)"
+#eval $(thefuck --alias)
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 source <(kubectl completion bash)
+
+# pnpm
+export PNPM_HOME="/home/$USER/.local/share/pnpm"
+case ":$PATH:" in
+*":$PNPM_HOME:"*) ;;
+*) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+
+ssh() { TERM=xterm-256color /usr/bin/ssh "$@" | ct; }
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH=$BUN_INSTALL/bin:$PATH
