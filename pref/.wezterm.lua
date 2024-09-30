@@ -37,10 +37,10 @@ config.background = {
 		source = {
 			File = "/home/anna/Pictures/e7/bellona.png",
 		},
-		hsb = { brightness = 0.02 },
+		hsb = { brightness = 0.025 },
 	},
 }
-config.default_prog = { "/usr/bin/zsh", "-l" }
+--config.default_prog = { "/usr/bin/zsh", "-l" }
 config.bypass_mouse_reporting_modifiers = "SHIFT"
 config.debug_key_events = true
 config.window_background_opacity = 0.5

@@ -70,9 +70,16 @@ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.0/install.sh | bash
 nvm install 20
 
 curl -sS https://starship.rs/install.sh | sh -s -- -y
-source ~/.bashrc
 
+echo -e "\033[31m\033[1m ---Bun for JS and TS!--- \033[0m"
 curl -fsSL https://bun.sh/install | bash
+echo -e "\033[31m\033[1m ---Bat theme!--- \033[0m"
+mkdir -p "$(bat --config-dir)/themes"
+wget -P "$(bat --config-dir)/themes" https://github.com/catppuccin/bat/raw/main/themes/Catppuccin%20Latte.tmTheme
+wget -P "$(bat --config-dir)/themes" https://github.com/catppuccin/bat/raw/main/themes/Catppuccin%20Frappe.tmTheme
+wget -P "$(bat --config-dir)/themes" https://github.com/catppuccin/bat/raw/main/themes/Catppuccin%20Macchiato.tmTheme
+wget -P "$(bat --config-dir)/themes" https://github.com/catppuccin/bat/raw/main/themes/Catppuccin%20Mocha.tmTheme
+bat cache --build
 
 echo -e "\033[31m\033[1m --- Install oh-my-zsh, powerlevel10k ---\033[0m"
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"

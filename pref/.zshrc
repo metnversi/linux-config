@@ -66,8 +66,13 @@ alias vim='nvim'
 alias ff='firefox &'
 alias bb='librewolf &'
 alias cf='fortune | cowsay'
-alias ddr='wezterm imgcat '
-alias cat='bat --theme="Catppuccin Macchiato" -p ' #bat --list-themes
+alias ddr='echo'
+
+# add -p for no line number, and --paging=never to not go less pager.
+# bat --list-themes 
+alias cat='bat --theme="Catppuccin Macchiato"'
+
+#ssh pair with ct. requires ct (chromaterm, install by pip3)
 alias mssh='ct multipass shell'
 alias ssh='TERM=xterm-256color ct ssh'
 
@@ -88,7 +93,7 @@ case ":$PATH:" in
 esac
 
 PATH=/home/$USER/.nimble/bin:/home/$USER/bin:/home/$USER/myenv/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:/snap/bin:/usr/sbin:/home/$USER/.local/bin:/usr/local/go/bin
-PATH="$PATH:/opt/nvim-linux64/bin:/home/linuxbrew/.linuxbrew/bin"
+PATH="$PATH:/opt/nvim-linux64/bin:/home/linuxbrew/.linuxbrew/bin:.config/emacs/bin"
 . "$HOME/.cargo/env"
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
@@ -96,8 +101,7 @@ source $ZSH/oh-my-zsh.sh
 
 # Move welcome.sh after oh-my-zsh.sh to avoid initialization issues
 #/home/$USER/welcome.sh
-#fortune | cowsay
-
+#fortune | cowsay | hacker-quotes
 #bun and fzf
 export BUN_INSTALL="$HOME/.bun"
 export PATH=$BUN_INSTALL/bin:$PATH
@@ -106,7 +110,9 @@ export FZF_DEFAULT_OPTS=" \
 --color=fg:#cdd6f4,header:#f38ba8,info:#cba6f7,pointer:#f5e0dc \
 --color=marker:#f5e0dc,fg+:#cdd6f4,prompt:#cba6f7,hl+:#f38ba8"
 
+export LESS='-R'
+export LESSOPEN='|~/.lessfilter %s'
+
 autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /usr/bin/terraform terraform
 
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
